@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 namespace Engine
 {
 
-    enum WeaponType { Sword, Axe, Lance }
+    public enum WeaponType { Sword, Axe, Lance }
 
-    interface IWeapon
+    public interface IWeapon
     {
         WeaponType get_type();
         int get_weight();
         int get_power();
     }
 
-    class WeaponFactory
+    public class WeaponFactory
     {
-        IWeapon create(WeaponType type, int weight, int power)
+        public IWeapon create(WeaponType type, int weight, int power)
         {
             return new Weapon(type, weight, power);
         }
     }
 
-    class Weapon : IWeapon
+    public class Weapon : IWeapon
     {
 
         int power;
