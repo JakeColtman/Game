@@ -67,7 +67,7 @@ namespace Engine
 
         public int get_defence()
         {
-            return this.defence
+            return this.defence;
         }
 
         public int get_health()

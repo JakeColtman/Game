@@ -31,7 +31,7 @@ namespace Engine
         int weight;
         WeaponType type;
 
-        public Weapon(WeaponType type, int power, int weight)
+        public Weapon(WeaponType type, int weight, int power)
         {
             this.power = power;
             this.weight = weight;

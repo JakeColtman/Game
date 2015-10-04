@@ -22,8 +22,8 @@ namespace Tests
             IWeapon axe = factory.create(WeaponType.Axe, 10, 100);
 
             Assert.AreEqual(axe.get_type(), WeaponType.Axe);
-            Assert.AreEqual(axe.get_power(), 10);
-            Assert.AreEqual(axe.get_weight(), 100);
+            Assert.AreEqual(axe.get_power(), 100);
+            Assert.AreEqual(axe.get_weight(), 10);
 
         }
     }
