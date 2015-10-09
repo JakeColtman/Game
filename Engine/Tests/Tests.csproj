@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Attack.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

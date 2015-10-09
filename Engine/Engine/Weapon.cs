@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Engine
 {
 
-    public enum WeaponType { Sword, Axe, Lance }
+    public enum WeaponType { Sword, Axe, Lance, None }
 
     public interface IWeapon
     {

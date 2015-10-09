@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 namespace Engine
 {
 
+    public interface IMoveable
+    {
+        bool can_move_to(Mappings.ICoordinate);
+        bool try_move_to(Mappings.ICoordinate);
+    }
+
     public interface IUnit
     {
         void attack(IUnit attackedBy);
