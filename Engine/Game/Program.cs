@@ -13,12 +13,12 @@ namespace Game
         {
             Engine.Mappings.IMapping<ICoordinate> baseMap = new CoordinateMap(3);
 
-            IMapping<IUnit> unitMap = new UnitMap();
+            IMapping<Engine.Unit.IUnit> unitMap = new UnitMap();
 
-            UnitFactory unitFactory = new UnitFactory();
+            Engine.Unit.UnitFactory unitFactory = new Engine.Unit.UnitFactory();
             WeaponFactory weaponFactory = new WeaponFactory();
 
-            IUnit pikeMan = unitFactory.create(10, 100, 2, weaponFactory.create(WeaponType.Lance, 1000, 1));
+            Engine.Unit.IUnit pikeMan = unitFactory.create(10, 100, 2, weaponFactory.create(WeaponType.Lance, 1000, 1));
 
             unitMap.add_to_pos(pikeMan, new Coordinate(2, 1));
 

@@ -4,43 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine
+namespace Engine.Unit
 {
+
+    public struct Stats
+    {
+        int health { get; set; }
+        int strength { get; set; }
+        int defence { get; set; }
+    }
 
     public interface IUnit
     {
         void attack(IUnit attackedBy);
         bool give_weapon(IWeapon newWeapon);
-        int get_strength();
-        int get_defence();
-        int get_health();
+        Stats get_stats();
         IWeapon get_weapon();
     }
 
     public class UnitFactory
     {
 
-        public IUnit create(Mappings.ICoordinate coord, int health, int strength, int defence, IWeapon weapon)
+        public IUnit create(Mappings.ICoordinate coord, Stats stats, IWeapon weapon)
         {
-            return new Unit(health, strength, defence, weapon, new MovementHandler(coord));
+            return new Unit(stats, weapon, new MovementHandler(coord));
         }
 
     }
 
     public class Unit : IUnit
     {
-        int health;
-        int strength;
-        int defence;
+        Stats stats;
         IWeapon weapon;
         IMoveable movement;
 
 
-        public Unit(int health, int strength, int defence, IWeapon weapon, IMoveable movementHandler)
+        public Unit(Stats stats, IWeapon weapon, IMoveable movementHandler)
         {
-            this.health = health;
-            this.strength = strength;
-            this.defence = defence;
+            this.stats = stats;
             this.weapon = weapon;
             this.movement = movementHandler;
         }
@@ -63,19 +64,9 @@ namespace Engine
 
         }
 
-        public int get_strength()
+        public Stats get_stats()
         {
-            return this.strength;
-        }
-
-        public int get_defence()
-        {
-            return this.defence;
-        }
-
-        public int get_health()
-        {
-            return this.health;
+            return this.stats;
         }
 
         public IWeapon get_weapon()

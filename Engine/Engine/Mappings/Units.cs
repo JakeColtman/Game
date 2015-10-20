@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Engine.Mappings
 {
-    public class UnitMap : IMapping<IUnit>
+    public class UnitMap : IMapping<Unit.IUnit>
     {
 
-        Dictionary<ICoordinate, IUnit> lookup;
+        Dictionary<ICoordinate, Unit.IUnit> lookup;
         
         public UnitMap()
         {
-            lookup = new Dictionary<ICoordinate, IUnit>();
+            lookup = new Dictionary<ICoordinate, Unit.IUnit>();
         }
 
-        public bool add_to_pos(IUnit addition, ICoordinate coord)
+        public bool add_to_pos(Unit.IUnit addition, ICoordinate coord)
         {
 
             if (!lookup.ContainsKey(coord))
@@ -31,13 +31,13 @@ namespace Engine.Mappings
             
         }
 
-        public IUnit get_pos(ICoordinate coord)
+        public Unit.IUnit get_pos(ICoordinate coord)
         {
 
             if (!lookup.ContainsKey(coord))
             {
-                UnitFactory unitFactory = new UnitFactory();
-                return unitFactory.create(coord, 0, 0, 0, new WeaponFactory().create(WeaponType.None, 0, 0));
+                Unit.UnitFactory unitFactory = new Unit.UnitFactory();
+                return unitFactory.create(coord, new Unit.Stats(), new WeaponFactory().create(WeaponType.None, 0, 0));
             }
             else
             {
