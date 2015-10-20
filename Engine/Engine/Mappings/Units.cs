@@ -37,7 +37,7 @@ namespace Engine.Mappings
             if (!lookup.ContainsKey(coord))
             {
                 UnitFactory unitFactory = new UnitFactory();
-                return unitFactory.create(0, 0, 0, new WeaponFactory().create(WeaponType.None, 0, 0));
+                return unitFactory.create(coord, 0, 0, 0, new WeaponFactory().create(WeaponType.None, 0, 0));
             }
             else
             {

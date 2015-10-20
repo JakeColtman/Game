@@ -20,9 +20,9 @@ namespace Engine
     public class UnitFactory
     {
 
-        public IUnit create(int health, int strength, int defence, IWeapon weapon)
+        public IUnit create(Mappings.ICoordinate coord, int health, int strength, int defence, IWeapon weapon)
         {
-            return new Unit(health, strength, defence, weapon);
+            return new Unit(health, strength, defence, weapon, new MovementHandler(coord));
         }
 
     }
@@ -33,13 +33,16 @@ namespace Engine
         int strength;
         int defence;
         IWeapon weapon;
+        IMoveable movement;
 
-        public Unit(int health, int strength, int defence, IWeapon weapon)
+
+        public Unit(int health, int strength, int defence, IWeapon weapon, IMoveable movementHandler)
         {
             this.health = health;
             this.strength = strength;
             this.defence = defence;
             this.weapon = weapon;
+            this.movement = movementHandler;
         }
 
         public void attack(IUnit attackedBy)
