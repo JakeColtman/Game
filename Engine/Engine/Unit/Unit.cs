@@ -22,15 +22,7 @@ namespace Engine.Unit
         IWeapon get_weapon();
     }
 
-    public class UnitFactory
-    {
 
-        public IUnit create(Mappings.ICoordinate coord, Stats stats, IWeapon weapon)
-        {
-            return new Unit(stats, weapon, new MovementHandler(coord));
-        }
-
-    }
 
     public class Unit : IUnit
     {

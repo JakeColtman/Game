@@ -25,6 +25,7 @@ namespace Engine.Mappings
     {
         void print();
         T get_pos(ICoordinate coord);
+        bool pos_exists(ICoordinate coord);
     }
     
 
