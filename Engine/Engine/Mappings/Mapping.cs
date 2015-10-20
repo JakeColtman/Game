@@ -14,4 +14,6 @@ namespace Engine.Mappings
         bool add_to_pos(T addition, ICoordinate coord);
         bool remove_from_pos(ICoordinate coord);
     }
+    
+
 }
