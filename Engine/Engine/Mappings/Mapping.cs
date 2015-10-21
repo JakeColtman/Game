@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 namespace Engine.Mappings
 {
 
-    public interface IMapWriteable<T>
+    public interface IMapWriteable<T, S>
     {
-        bool can_move(ICoordinate<T> startCoord, ICoordinate<T> endCoord);
         bool move(ICoordinate<T> startCoord, ICoordinate<T> endCoord);
+        bool add_to_coord(ICoordinate<T> position, S item);
+        bool remove_from_coord(ICoordinate<T> position, S item);
     }
 
     public interface IMapReadable<T, S>
