@@ -27,7 +27,7 @@ namespace Engine.Movement
         bool request_a_move(MovementRequest<T> request);
     }
 
-    class TwoDMovementBus : IMovementBus<TwoD>
+    public class TwoDMovementBus : IMovementBus<TwoD>
     {
 
         IList<IMovementHandler<TwoD>> _blocking_handlers;
@@ -37,6 +37,11 @@ namespace Engine.Movement
         {
             _blocking_handlers = blocking_handlers;
             _non_blocking_handlers = non_blocking_handlers;
+        }
+
+        public TwoDMovementBus() : this (new List<IMovementHandler<TwoD>>(), new List<IMovementHandler<TwoD>>())
+        {
+
         }
 
         public bool add_blocking_listener(IMovementHandler<TwoD> handler)

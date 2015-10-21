@@ -5,15 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Engine;
 using Engine.Mappings;
+using Engine.Mappings.Coordinates;
+using Engine.Movement;
+using Engine.Unit;
+
 namespace Game
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Engine.Mappings.IMapping<ICoordinate> baseMap = new CoordinateMap(3);
+            IMovementBus<TwoD> bus = new TwoDMovementBus();
 
-            //IMapping<Engine.Unit.IUnit> unitMap = new UnitMap();
+            TwoDMap<IUnit> map = new TwoDMap<IUnit>(10);
 
             //Engine.Unit.UnitFactory unitFactory = new Engine.Unit.UnitFactory();
             //WeaponFactory weaponFactory = new WeaponFactory();
