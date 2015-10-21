@@ -33,11 +33,6 @@ namespace Engine.Coordinates
 
             }
         }
-
-        public ICoordinate<TwoD> increment(TwoD dimension, direction direction)
-        {
-
-
-        }
+        
     }
 }
