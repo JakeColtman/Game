@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Engine.Mappings;
+using Engine.Mappings.Coordinates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,24 +11,25 @@ namespace Engine.Unit
     public class UnitFactory
     {
 
-        Mappings.IMapUpdatable _writeMap;
-        Mappings.IMapUpdateReadable<IUnit> _readMap;
+        Mappings.IMapWriteable<TwoD, IUnit> _writeMap;
+        Mappings.IMapReadable<TwoD, IUnit> _readMap;
+        Movement.IMovementBus<TwoD> _bus;
 
-        public UnitFactory(Mappings.IMapUpdatable updateMap, Mappings.IMapUpdateReadable<IUnit> readMap)
+        public UnitFactory(IMapWriteable<TwoD, IUnit> writeMap, IMapReadable<TwoD, IUnit> readMap, Movement.IMovementBus<TwoD> bus)
         {
-            _writeMap = updateMap;
+            _writeMap = writeMap;
             _readMap = readMap;
+            _bus = bus;
         }
 
-        public IUnit create(Mappings.ICoordinate coord, Stats stats, IWeapon weapon)
+        public IUnit create(ICoordinate<TwoD> coord, Stats stats, IWeapon weapon)
         {
-            if (_readMap.pos_exists(coord))
+            if (_readMap.get_item_at_coord(coord) != null)
             {
                 throw new ArgumentOutOfRangeException("Pos already exists");
             }
 
-            IMoveable movementHandler = new MovementHandler(coord);
-            movementHandler.add_movement_subscriber(_writeMap);
+            IMoveable<TwoD> movementHandler = new TwoDMovementHandler(_bus, coord);
 
             return new Unit(stats, weapon, movementHandler);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.Mappings.Coordinates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,10 +29,10 @@ namespace Engine.Unit
     {
         Stats stats;
         IWeapon weapon;
-        IMoveable movement;
+        IMoveable<TwoD> movement;
 
 
-        public Unit(Stats stats, IWeapon weapon, IMoveable movementHandler)
+        public Unit(Stats stats, IWeapon weapon, IMoveable<TwoD> movementHandler)
         {
             this.stats = stats;
             this.weapon = weapon;
