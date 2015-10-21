@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.Mappings.Coordinates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,26 +7,18 @@ using System.Threading.Tasks;
 
 namespace Engine.Mappings
 {
-    public interface IMapping<T>
+
+    public interface IMapWriteable<T>
     {
-        void print();
-        T get_pos(ICoordinate coord);
-        bool pos_exists(ICoordinate coord);
-        bool add_to_pos(T addition, ICoordinate coord);
-        bool remove_from_pos(ICoordinate coord);
+        bool can_move(ICoordinate<T> startCoord, ICoordinate<T> endCoord);
+        bool move(ICoordinate<T> startCoord, ICoordinate<T> endCoord);
     }
 
-    public interface IMapUpdatable
-    {
-        bool can_move(ICoordinate startCoord, ICoordinate endCoord);
-        bool move(ICoordinate startCoord, ICoordinate endCoord);
-    }
-
-    public interface IMapUpdateReadable<T>
+    public interface IMapReadable<T, S>
     {
         void print();
-        T get_pos(ICoordinate coord);
-        bool pos_exists(ICoordinate coord);
+        S get_pos(ICoordinate<T> coord);
+        bool pos_exists(ICoordinate<T> coord);
     }
     
 
