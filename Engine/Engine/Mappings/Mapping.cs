@@ -19,6 +19,7 @@ namespace Engine.Mappings
         void print();
         S get_pos(ICoordinate<T> coord);
         bool pos_exists(ICoordinate<T> coord);
+        ICoordinate<T> next_pos(ICoordinate<T> coord, T dimension, direction direction);
     }
     
 
