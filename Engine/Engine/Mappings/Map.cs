@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Engine.Mappings
 {
     
-    public class TwoDMap<MappedType> : IMapWriteable<ICoordinate<TwoD>>, IMapReadable<ICoordinate<TwoD>, MappedType>
+    public class TwoDMap<MappedType> : IMapWriteable<TwoD, MappedType>, IMapReadable<TwoD, MappedType>
     {
 
         MappedType[,] mapArray;
@@ -23,9 +23,10 @@ namespace Engine.Mappings
 
         }
 
-        public bool can_move(ICoordinate<ICoordinate<TwoD>> startCoord, ICoordinate<ICoordinate<TwoD>> endCoord)
+        public bool add_to_coord(ICoordinate<TwoD> position, MappedType item)
         {
-            throw new NotImplementedException();
+            mapArray[position.get_pos(TwoD.x), position.get_pos(TwoD.y)] = item;
+            return true;
         }
 
         public MappedType get_pos(ICoordinate<TwoD> coord)
@@ -33,16 +34,24 @@ namespace Engine.Mappings
             return mapArray[coord.get_pos(TwoD.x), coord.get_pos(TwoD.y)];
         }
 
-        public bool move(ICoordinate<ICoordinate<TwoD>> startCoord, ICoordinate<ICoordinate<TwoD>> endCoord)
+        public bool move(ICoordinate<TwoD> startCoord, ICoordinate<TwoD> endCoord)
         {
-            throw new NotImplementedException();
+            add_to_coord(endCoord, get_pos(endCoord));
+            remove_from_coord(startCoord);
+            return true;
         }
 
         public void print()
         {
             Console.WriteLine("I'm a square map of size " + size.ToString());
         }
-        
+
+        public bool remove_from_coord(ICoordinate<TwoD> position)
+        {
+            mapArray[position.get_pos(TwoD.x), position.get_pos(TwoD.y)] = default(MappedType);
+            return true;
+        }
+
         private bool within_array_bounds(ICoordinate<TwoD> coord)
         {
             return (coord.get_pos(TwoD.x) >= 0) && (coord.get_pos(TwoD.x) < size) && (coord.get_pos(TwoD.y) >= 0) && (coord.get_pos(TwoD.y) < size);

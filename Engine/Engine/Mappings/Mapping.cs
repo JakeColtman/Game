@@ -12,14 +12,13 @@ namespace Engine.Mappings
     {
         bool move(ICoordinate<T> startCoord, ICoordinate<T> endCoord);
         bool add_to_coord(ICoordinate<T> position, S item);
-        bool remove_from_coord(ICoordinate<T> position, S item);
+        bool remove_from_coord(ICoordinate<T> position);
     }
 
     public interface IMapReadable<T, S>
     {
         void print();
-        S get_pos(ICoordinate<T> coord);
-        bool pos_exists(ICoordinate<T> coord);
+        S get_item_at_coord(ICoordinate<T> coord);
         ICoordinate<T> next_pos(ICoordinate<T> coord, T dimension, direction direction);
     }
     
