@@ -51,6 +51,7 @@
     <Compile Include="Mappings\Mapping.cs" />
     <Compile Include="Mappings\Units.cs" />
     <Compile Include="Moveable.cs" />
+    <Compile Include="Movement\MovementBus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unit\UnitFactory.cs" />

@@ -25,6 +25,7 @@ namespace Engine.Mappings
 
         public bool add_to_coord(ICoordinate<TwoD> position, MappedType item)
         {
+            if (!this.within_array_bounds(position)) throw new ArgumentOutOfRangeException("position", "The new position must lie within the board itself");
             mapArray[position.get_pos(TwoD.x), position.get_pos(TwoD.y)] = item;
             return true;
         }

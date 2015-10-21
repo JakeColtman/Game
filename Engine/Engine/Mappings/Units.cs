@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Mappings
 {
+    /*
     public class UnitMap : IMapping<Unit.IUnit>
     {
 
@@ -69,4 +70,5 @@ namespace Engine.Mappings
             return true;
         }
     }
+    */
 }
