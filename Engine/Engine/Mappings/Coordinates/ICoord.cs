@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Engine.Mappings.Coordinates
 {
-    public interface ICoordinate<TwoD>
+    public interface ICoordinate<T>
     {
-        int get_pos(TwoD dimension);
+        int get_pos(T dimension);
+        ICoordinate<T> increment(T dimension, direction direction);
     }
 
    
