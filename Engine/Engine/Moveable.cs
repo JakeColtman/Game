@@ -4,45 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine.Mappings;
+using Engine.Mappings.Coordinates;
 
 namespace Engine
 {
 
-    public interface IMoveable
+    public interface IMoveable<T>
     {
-        bool try_and_move(Mappings.ICoordinate end_coord);
-        bool add_movement_subscriber(Mappings.IMapUpdatable map);
+        bool try_and_move(ICoordinate<T> end_coord);
+        ICoordinate<T> get_current_pos();
     }
 
-    public class MovementHandler : IMoveable
+    public class TwoDMovementHandler : IMoveable<TwoD>
     {
-        IList<Mappings.IMapUpdatable> subscribers;
-        Mappings.ICoordinate current_pos;
+     
+        ICoordinate<TwoD> _pos;
+        Movement.IMovementBus<TwoD> _bus;
 
-        public MovementHandler(Mappings.ICoordinate pos)
+        public TwoDMovementHandler(Movement.IMovementBus<TwoD> bus, ICoordinate<TwoD> pos)
         {
-            current_pos = pos;
-            subscribers = new List<Mappings.IMapUpdatable>();
+            _pos = pos;
+            _bus = bus;
         }
 
-        public bool add_movement_subscriber(IMapUpdatable map)
+        public ICoordinate<TwoD> get_current_pos()
         {
-            try {
-                subscribers.Add(map);
+            return _pos;
+        }
+
+        public bool try_and_move(ICoordinate<TwoD> end_coord)
+        {
+            Movement.MovementRequest<TwoD> req = new Movement.MovementRequest<TwoD>() { start = get_current_pos(), end = end_coord };
+            if (_bus.request_a_move(req))
+            {
+                _pos = end_coord;
                 return true;
             }
-            catch(Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
                 return false;
             }
-        }
-
-        public bool try_and_move(ICoordinate end_coord)
-        {
-            if (subscribers.All(x => x.can_move(current_pos, end_coord)))
-                return subscribers.Select(x => x.move(current_pos, end_coord)).All(x => x);
-            else return false;       
         }
     }
 
