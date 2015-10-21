@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.Mappings
+namespace Engine.Coordinates
 {
-    public interface ICoordinate
-    {
-        int get_x_pos();
-        int get_y_pos();
-    }
+
+    public enum TwoD { x, y }
+
 
     public class Coordinate : ICoordinate
     {

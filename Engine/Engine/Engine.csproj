@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attack.cs" />
-    <Compile Include="Mappings\Coordinate.cs" />
+    <Compile Include="Mappings\Coordinates\Coordinate.cs" />
+    <Compile Include="Mappings\Coordinates\Dimensions.cs" />
+    <Compile Include="Mappings\Coordinates\ICoord.cs" />
     <Compile Include="Mappings\Map.cs" />
     <Compile Include="Mappings\Mapping.cs" />
     <Compile Include="Mappings\Units.cs" />
