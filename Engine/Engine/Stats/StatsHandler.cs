@@ -19,10 +19,11 @@ namespace Engine.Unit
     public interface IStatsUpdater
     {
         bool attack_with_stats(IStatsReader attackerStats);
+        bool heal_with_stats(IStatsReader healerStats);
     }
 
 
-    public class SimpleStats : IStatsReader
+    public class SimpleStats : IStatsReader, IStatsUpdater
     {
 
         int _health;
@@ -42,6 +43,18 @@ namespace Engine.Unit
         public int get_defence()
         {
             return _defence;
+        }
+
+        public bool attack_with_stats(IStatsReader attackerStats)
+        {
+            _health -= attackerStats.get_stength();
+            return true;
+        }
+
+        public bool heal_with_stats(IStatsReader healerStats)
+        {
+            _health += healerStats.get_stength();
+            return true;
         }
     }
 }

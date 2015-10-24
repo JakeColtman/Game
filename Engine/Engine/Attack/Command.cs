@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace Engine.Attack
 {
 
-    class AttackCommand : IMessage
+    class SimpleAttackCommand : IMessage
     {
 
         Unit.IUnit _attacker;
         Unit.IUnit _attacked;
 
-        public AttackCommand(Unit.IUnit attackingUnit, Unit.IUnit defendingUnit)
+        public SimpleAttackCommand(Unit.IUnit attackingUnit, Unit.IUnit defendingUnit)
         {
             _attacker = attackingUnit;
             _attacked = defendingUnit;
@@ -21,12 +21,12 @@ namespace Engine.Attack
 
         public bool execute()
         {
-            return true;
+            return _attacked.get_stats_updater().attack_with_stats(_attacker.get_stats_reader());
         }
 
         public bool undo()
         {
-            return true;
+            return _attacked.get_stats_updater().heal_with_stats(_attacker.get_stats_reader());
         }
 
 
