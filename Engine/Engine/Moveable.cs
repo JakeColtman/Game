@@ -35,6 +35,7 @@ namespace Engine
         public bool try_and_move(ICoordinate<TwoD> end_coord)
         {
             Movement.MovementRequest<TwoD> req = new Movement.MovementRequest<TwoD>() { start = get_current_pos(), end = end_coord };
+            Console.WriteLine("Starting the movmement request");
             if (_bus.request_a_move(req))
             {
                 _pos = end_coord;

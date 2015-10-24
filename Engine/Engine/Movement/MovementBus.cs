@@ -61,9 +61,9 @@ namespace Engine.Movement
             if (_blocking_handlers.All(x => x.will_allow_move(request)))
             {
                 _blocking_handlers
-                    .Select(x => x.move(request));
+                    .Select(x => x.move(request)).ToList();
 
-                _non_blocking_handlers.Select(x => (x.will_allow_move(request)) ? x.move(request) : false);
+                _non_blocking_handlers.Select(x => (x.will_allow_move(request)) ? x.move(request) : false).ToList();
 
                 return true;
             }

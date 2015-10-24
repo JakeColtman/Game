@@ -37,7 +37,7 @@ namespace Engine.Mappings
 
         public bool move(ICoordinate<TwoD> startCoord, ICoordinate<TwoD> endCoord)
         {
-            add_to_coord(endCoord, get_item_at_coord(endCoord));
+            add_to_coord(endCoord, get_item_at_coord(startCoord));
             remove_from_coord(startCoord);
             return true;
         }
@@ -65,6 +65,7 @@ namespace Engine.Mappings
         public void print()
         {
             Console.WriteLine("I'm a square map of size " + size.ToString());
+            
         }
 
         public bool remove_from_coord(ICoordinate<TwoD> position)

@@ -8,12 +8,7 @@ using System.Threading.Tasks;
 namespace Engine.Unit
 {
 
-    public struct Stats
-    {
-        int health { get; set; }
-        int strength { get; set; }
-        int defence { get; set; }
-    }
+
 
     public interface IUnit
     {
@@ -21,6 +16,7 @@ namespace Engine.Unit
         bool give_weapon(IWeapon newWeapon);
         Stats get_stats();
         IWeapon get_weapon();
+        IMoveable<TwoD> get_movement();
     }
 
 
@@ -65,6 +61,11 @@ namespace Engine.Unit
         public IWeapon get_weapon()
         {
             return this.weapon;
+        }
+
+        public IMoveable<TwoD> get_movement()
+        {
+            return movement;
         }
     }
 }

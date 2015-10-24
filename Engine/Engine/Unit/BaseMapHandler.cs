@@ -20,6 +20,7 @@ namespace Engine.Movement
 
         public bool move(MovementRequest<TwoD> request)
         {
+            Console.WriteLine("Starting move");
             return _map.move(request.start, request.end);
         }
 

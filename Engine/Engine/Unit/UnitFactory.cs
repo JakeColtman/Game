@@ -31,7 +31,10 @@ namespace Engine.Unit
 
             IMoveable<TwoD> movementHandler = new TwoDMovementHandler(_bus, coord);
 
-            return new Unit(stats, weapon, movementHandler);
+            var newUnit = new Unit(stats, weapon, movementHandler);
+
+           _writeMap.add_to_coord(coord, newUnit);
+            return newUnit;
         }
 
     }

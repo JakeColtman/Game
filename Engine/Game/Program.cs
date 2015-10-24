@@ -8,6 +8,7 @@ using Engine.Mappings;
 using Engine.Mappings.Coordinates;
 using Engine.Movement;
 using Engine.Unit;
+using Engine.Coordinates;
 
 namespace Game
 {
@@ -18,11 +19,25 @@ namespace Game
             IMovementBus<TwoD> bus = new TwoDMovementBus();
 
             TwoDMap<IUnit> map = new TwoDMap<IUnit>(10);
+            TwoDMapHandler handler = new TwoDMapHandler(map);
+            bus.add_blocking_listener(handler);
 
-            //Engine.Unit.UnitFactory unitFactory = new Engine.Unit.UnitFactory();
-            //WeaponFactory weaponFactory = new WeaponFactory();
+            UnitFactory unitFactory = new UnitFactory(map, map, bus);
+            
+            
+            WeaponFactory weaponFactory = new WeaponFactory();
 
-            //Engine.Unit.IUnit pikeMan = unitFactory.create(10, 100, 2, weaponFactory.create(WeaponType.Lance, 1000, 1));
+            Stats exampleStat = new Stats() { strength = 1, defence = 1, health = 1 };
+
+            IUnit pikeMan = unitFactory.create(new TwoDCoord(1,2), exampleStat, weaponFactory.create(WeaponType.Lance, 1000, 1));
+
+            map.print();
+
+            pikeMan.get_movement().try_and_move(new TwoDCoord(1, 3));
+            pikeMan.get_movement().try_and_move(new TwoDCoord(3, 5));
+            Console.WriteLine(map.get_item_at_coord(new TwoDCoord(3, 5)).get_stats().defence);
+
+            Console.Read();
 
             //unitMap.add_to_pos(pikeMan, new Coordinate(2, 1));
 
