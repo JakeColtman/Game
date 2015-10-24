@@ -14,7 +14,8 @@ namespace Engine.Unit
     {
         void attack(IUnit attackedBy);
         bool give_weapon(IWeapon newWeapon);
-        Stats get_stats();
+        IStatsReader get_stats_reader();
+        IStatsUpdater get_stats_updater();
         IWeapon get_weapon();
         IMoveable<TwoD> get_movement();
     }
@@ -23,14 +24,15 @@ namespace Engine.Unit
 
     public class Unit : IUnit
     {
-        Stats stats;
         IWeapon weapon;
         IMoveable<TwoD> movement;
+        IStatsUpdater _statsUpdater;
+        IStatsReader _statsReader;
 
-
-        public Unit(Stats stats, IWeapon weapon, IMoveable<TwoD> movementHandler)
+        public Unit(IStatsUpdater statsUpdater, IStatsReader statsReader, IWeapon weapon, IMoveable<TwoD> movementHandler)
         {
-            this.stats = stats;
+            _statsReader = statsReader;
+            _statsUpdater = statsUpdater;
             this.weapon = weapon;
             this.movement = movementHandler;
         }
@@ -53,11 +55,6 @@ namespace Engine.Unit
 
         }
 
-        public Stats get_stats()
-        {
-            return this.stats;
-        }
-
         public IWeapon get_weapon()
         {
             return this.weapon;
@@ -66,6 +63,16 @@ namespace Engine.Unit
         public IMoveable<TwoD> get_movement()
         {
             return movement;
+        }
+
+        public IStatsReader get_stats_reader()
+        {
+            return _statsReader;
+        }
+
+        public IStatsUpdater get_stats_updater()
+        {
+            return _statsUpdater;
         }
     }
 }
