@@ -7,12 +7,7 @@ using System.Threading.Tasks;
 namespace Engine.Attack
 {
 
-    public interface IAttack
-    {
-        void execute();
-    }
-
-    class AttackCommand
+    class AttackCommand : IMessage
     {
 
         Unit.IUnit _attacker;
@@ -24,9 +19,14 @@ namespace Engine.Attack
             _attacked = defendingUnit;
         }
 
-        public void execute()
+        public bool execute()
         {
-            
+            return true;
+        }
+
+        public bool undo()
+        {
+            return true;
         }
 
 

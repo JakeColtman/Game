@@ -46,6 +46,7 @@
     <Compile Include="Attack.cs" />
     <Compile Include="Attack\Command.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="Handler.cs" />
     <Compile Include="Mappings\Coordinates\TwoDCoord.cs" />
     <Compile Include="Mappings\Coordinates\Dimensions.cs" />
     <Compile Include="Mappings\Coordinates\ICoord.cs" />
