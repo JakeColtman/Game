@@ -10,6 +10,7 @@ namespace Engine.Mappings.Coordinates
     {
         int get_pos(T dimension);
         ICoordinate<T> get_next(Vector<T> vector);
+        
     }
 
     public enum Direction { forward = 1, backwards = -1 }

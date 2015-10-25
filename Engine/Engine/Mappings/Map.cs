@@ -8,33 +8,29 @@ using System.Threading.Tasks;
 namespace Engine.Mappings
 {
     
-    public class TwoDMap<MappedType> : IMapWriteable<TwoD, MappedType>, IMapReadable<TwoD, MappedType>
+    public class SquareMap<TDimension, TMapped> : IMapWriteable<TDimension, TMapped>, IMapReadable<TDimension, TMapped>
     {
 
-        MappedType[,] mapArray;
-        int size;
-
-        public TwoDMap(int size)
+        Dictionary<ICoordinate<TDimension>, TMapped> _lookup;
+        
+        public SquareMap()
         {
-            mapArray = new MappedType[size, size];
-
-            this.size = size;
-
+            _lookup = new Dictionary<ICoordinate<TDimension>, TMapped>();
         }
 
-        public bool add_to_coord(ICoordinate<TwoD> position, MappedType item)
+        public bool add_to_coord(ICoordinate<TDimension> position, TMapped item)
         {
-            if (!this.within_array_bounds(position)) throw new ArgumentOutOfRangeException("position", "The new position must lie within the board itself");
-            mapArray[position.get_pos(TwoD.x), position.get_pos(TwoD.y)] = item;
+            _lookup.Add(position, item);
             return true;
         }
 
-        public MappedType get_item_at_coord(ICoordinate<TwoD> coord)
+        public TMapped get_item_at_coord(ICoordinate<TDimension> coord)
         {
-            return mapArray[coord.get_pos(TwoD.x), coord.get_pos(TwoD.y)];
+            if (_lookup.ContainsKey(coord)) return _lookup[coord];
+            else throw new ArgumentException("Doesn't exist");
         }
 
-        public bool move(ICoordinate<TwoD> startCoord, ICoordinate<TwoD> endCoord)
+        public bool move(ICoordinate<TDimension> startCoord, ICoordinate<TDimension> endCoord)
         {
             add_to_coord(endCoord, get_item_at_coord(startCoord));
             remove_from_coord(startCoord);
@@ -43,19 +39,14 @@ namespace Engine.Mappings
 
         public void print()
         {
-            Console.WriteLine("I'm a square map of size " + size.ToString());
+            Console.WriteLine("I'm a square map with " + _lookup.Keys.Count.ToString() + " items in");
             
         }
 
-        public bool remove_from_coord(ICoordinate<TwoD> position)
+        public bool remove_from_coord(ICoordinate<TDimension> position)
         {
-            mapArray[position.get_pos(TwoD.x), position.get_pos(TwoD.y)] = default(MappedType);
+            _lookup.Remove(position);
             return true;
-        }
-
-        private bool within_array_bounds(ICoordinate<TwoD> coord)
-        {
-            return (coord.get_pos(TwoD.x) >= 0) && (coord.get_pos(TwoD.x) < size) && (coord.get_pos(TwoD.y) >= 0) && (coord.get_pos(TwoD.y) < size);
         }
 
 
