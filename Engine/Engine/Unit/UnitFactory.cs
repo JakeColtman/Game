@@ -8,6 +8,12 @@ using System.Threading.Tasks;
 
 namespace Engine.Unit
 {
+
+    public interface IUnitFactory<TInstruction, TOutput>
+    {
+        TOutput create(TInstruction instruction);
+    }
+
     public class UnitFactory
     {
 
@@ -22,7 +28,7 @@ namespace Engine.Unit
             _bus = bus;
         }
 
-        public IUnit create(ICoordinate<TwoD> coord, Stats stats, IWeapon weapon)
+        public IUnit create(ICoordinate<TwoD> coord, IStatsReader stats_reader, IStatsUpdater stats_updater, IWeapon weapon)
         {
             if (_readMap.get_item_at_coord(coord) != null)
             {
@@ -31,7 +37,7 @@ namespace Engine.Unit
 
             IMoveable<TwoD> movementHandler = new TwoDMovementHandler(_bus, coord);
 
-            var newUnit = new Unit(stats, weapon, movementHandler);
+            var newUnit = new Unit(stats_updater, stats_reader, weapon, movementHandler);
 
            _writeMap.add_to_coord(coord, newUnit);
             return newUnit;

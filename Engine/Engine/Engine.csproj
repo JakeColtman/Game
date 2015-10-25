@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attack.cs" />
     <Compile Include="Attack\Command.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Handler.cs" />
+    <Compile Include="Mappings\Coordinates\Iso2D.cs" />
     <Compile Include="Mappings\Coordinates\TwoDCoord.cs" />
     <Compile Include="Mappings\Coordinates\Dimensions.cs" />
     <Compile Include="Mappings\Coordinates\ICoord.cs" />
@@ -54,6 +54,7 @@
     <Compile Include="Mappings\Mapping.cs" />
     <Compile Include="Mappings\Units.cs" />
     <Compile Include="Moveable.cs" />
+    <Compile Include="Player\TwoPlayers.cs" />
     <Compile Include="Unit\BaseMapHandler.cs" />
     <Compile Include="Movement\MovementBus.cs" />
     <Compile Include="Program.cs" />

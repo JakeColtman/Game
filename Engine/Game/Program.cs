@@ -8,7 +8,6 @@ using Engine.Mappings;
 using Engine.Mappings.Coordinates;
 using Engine.Movement;
 using Engine.Unit;
-using Engine.Coordinates;
 
 namespace Game
 {
@@ -27,15 +26,15 @@ namespace Game
             
             WeaponFactory weaponFactory = new WeaponFactory();
 
-            Stats exampleStat = new Stats() { strength = 1, defence = 1, health = 1 };
+            SimpleStats exampleStat = new SimpleStats();
 
-            IUnit pikeMan = unitFactory.create(new TwoDCoord(1,2), exampleStat, weaponFactory.create(WeaponType.Lance, 1000, 1));
+            IUnit pikeMan = unitFactory.create(new TwoDCoord(1,2), exampleStat, exampleStat, weaponFactory.create(WeaponType.Lance, 1000, 1));
 
             map.print();
 
             pikeMan.get_movement().try_and_move(new TwoDCoord(1, 3));
             pikeMan.get_movement().try_and_move(new TwoDCoord(3, 5));
-            Console.WriteLine(map.get_item_at_coord(new TwoDCoord(3, 5)).get_stats().defence);
+            Console.WriteLine(map.get_item_at_coord(new TwoDCoord(3, 5)).get_stats_reader().get_defence());
 
             Console.Read();
 

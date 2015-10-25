@@ -19,7 +19,6 @@ namespace Engine.Mappings
     {
         void print();
         S get_item_at_coord(ICoordinate<T> coord);
-        ICoordinate<T> next_pos(ICoordinate<T> coord, T dimension, direction direction);
     }
     
 

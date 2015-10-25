@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 namespace Engine.Mappings.Coordinates
 {
 
-    public enum TwoD { x, y }
 
-    public enum Iso2D { l, r }
 
-    public enum direction {  forward, backwards }
+
 
 }

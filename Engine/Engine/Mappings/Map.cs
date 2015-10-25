@@ -1,5 +1,4 @@
-﻿using Engine.Coordinates;
-using Engine.Mappings.Coordinates;
+﻿using Engine.Mappings.Coordinates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,26 +39,6 @@ namespace Engine.Mappings
             add_to_coord(endCoord, get_item_at_coord(startCoord));
             remove_from_coord(startCoord);
             return true;
-        }
-
-        public ICoordinate<TwoD> next_pos(ICoordinate<TwoD> coord, TwoD dimension, direction direction)
-        {
-            int incr = (direction == direction.forward) ? 1 : -1;
-            int x = coord.get_pos(TwoD.x);
-            int y = coord.get_pos(TwoD.y);
-            switch (dimension)
-            {
-                case TwoD.x:
-                    x += incr;
-                    break;
-                case TwoD.y:
-                    y += incr;
-                    break;
-                default:
-                    throw new NotImplementedException("Valid dimensions for this coord are x and y");
-
-            }
-            return new TwoDCoord(x, y);
         }
 
         public void print()
