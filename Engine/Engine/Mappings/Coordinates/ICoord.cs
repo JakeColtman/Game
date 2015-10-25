@@ -9,6 +9,7 @@ namespace Engine.Mappings.Coordinates
     public interface ICoordinate<T>
     {
         int get_pos(T dimension);
+        ICoordinate<T> get_next(direction dir);
     }
 
    

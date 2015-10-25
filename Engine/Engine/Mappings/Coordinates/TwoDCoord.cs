@@ -20,6 +20,35 @@ namespace Engine.Coordinates
             this.y = y;
         }
 
+        public ICoordinate<TwoD> get_next(TwoD dim, direction dir)
+        {
+
+            int incr = 0;
+
+            switch (dir)
+            {
+                case direction.backwards:
+                    incr = -1;
+                    break;
+                case direction.forward:
+                    incr = 1;
+                    break;
+                default:
+                    throw new NotImplementedException("Only forwards and backwards are viable directions");
+                   
+            }
+
+            if(dim == TwoD.x)
+            {
+                return new TwoDCoord(x + incr, y);
+            }
+            else
+            {
+                return new TwoDCoord(x, y + incr);
+            }
+
+        }
+
         public int get_pos(TwoD dimension)
         {
             switch (dimension)
