@@ -15,13 +15,13 @@ namespace Engine
 
     public interface IEngine
     {
-        void send_message(IMessage message);
-        void add_blocking_handler(IHandler handler);
+        void send_message(Message message);
+        void add_blocking_handler(IMessageHandler handler);
         void confirm();
         void rollback();           
     }
 
-    public class UndoMessage :IMessage
+    public class UndoMessage :Message
     {
 
         IMessage _original_message;
@@ -42,18 +42,19 @@ namespace Engine
         }
     }
 
-    class SimpleEngine : IEngine
+    public class SimpleEngine : IEngine
     {
 
         List<IMessage> _unconfirmed_messages;
-        List<IHandler> _handlers;
+        List<IMessageHandler> _handlers;
 
         public SimpleEngine()
         {
             _unconfirmed_messages = new List<IMessage>();
+            _handlers = new List<IMessageHandler>();
         }
 
-        public void add_blocking_handler(IHandler handler)
+        public void add_blocking_handler(IMessageHandler handler)
         {
             _handlers.Add(handler);
         }
@@ -69,11 +70,15 @@ namespace Engine
             confirm();
         }
 
-        public void send_message(IMessage message)
+        public void send_message(Message message)
         {
-            if (_handlers.Where(x => x.can_handle(message)).All(x => x.will_allow(message)))
+            if (_handlers.All(x => x.will_allow(message)))
             {
-                _handlers.Select(x => x.process(message));
+                _handlers.Where(x => x.can_handle(message)).Select(x => x.process(message));
+            }
+            else
+            {
+                Console.WriteLine("Move rejected");
             }
         }
     }

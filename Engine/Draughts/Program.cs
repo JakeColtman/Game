@@ -56,8 +56,14 @@ namespace Draughts
             };
 
             setup.ForEach(x => map.add_to_coord(x.position, manFactory.create(x)));
-            Console.WriteLine("Set up");
-            Console.Write(map.get_item_at_coord(new Iso2DCoord(2,0))._side);
+
+            IEngine engine = new SimpleEngine();
+            engine.add_blocking_handler(new SquareMapEventHandler<Iso2D, Man>(map));
+            engine.add_blocking_handler(new Rules.MenMoveForwardOnly());
+
+            Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>() { end = new Iso2DCoord(2, 4), start = new Iso2DCoord(1, 3)};
+
+            engine.send_message(req);
 
             Console.Read();
 

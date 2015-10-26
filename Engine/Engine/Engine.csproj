@@ -52,7 +52,9 @@
     <Compile Include="Mappings\Coordinates\ICoord.cs" />
     <Compile Include="Mappings\Map.cs" />
     <Compile Include="Mappings\Mapping.cs" />
+    <Compile Include="Mappings\SquareMapEventHandler.cs" />
     <Compile Include="Mappings\Units.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Moveable.cs" />
     <Compile Include="Player\TwoPlayers.cs" />
     <Compile Include="Unit\BaseMapHandler.cs" />

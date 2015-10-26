@@ -14,10 +14,10 @@ namespace Engine.Movement
         bool move(MovementRequest<T> request);
     }
 
-    public class MovementRequest<T>
+    public class MovementRequest<T> : Message
     {
-        public ICoordinate<TwoD> start;
-        public ICoordinate<TwoD> end;
+        public ICoordinate<T> start;
+        public ICoordinate<T> end;
     }
 
     public interface IMovementBus<T>
