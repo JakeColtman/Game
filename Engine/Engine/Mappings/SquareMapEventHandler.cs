@@ -21,7 +21,7 @@ namespace Engine.Mappings
         public bool can_handle(Message message)
         {
             Console.WriteLine("Can square map handler the move?");
-            return message is MovementRequest<TDimension>;
+            return message is MovementRequest<TDimension>  || message is Engine.Attack.DestructionRequest<TDimension>;
         }
 
         public bool will_allow(Message message)
@@ -31,8 +31,18 @@ namespace Engine.Mappings
 
         public bool process(Message message)
         {
-            var req = (MovementRequest<TDimension>)message;
-            _map.move(req.mover.get_pos(),req.end);
+
+            if(message is MovementRequest<TDimension>)
+            {
+                var req = (MovementRequest<TDimension>)message;
+                _map.move(req.mover.get_pos(), req.end);
+                req.mover.set_pos(req.end);
+            }
+            else
+            {
+                var req = (Engine.Attack.DestructionRequest<TDimension>)message;
+                _map.remove_from_coord(req.position);
+            }
             return true;
         }
     }

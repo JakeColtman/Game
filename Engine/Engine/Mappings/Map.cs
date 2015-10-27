@@ -27,7 +27,7 @@ namespace Engine.Mappings
         public TMapped get_item_at_coord(ICoordinate<TDimension> coord)
         {
             if (_lookup.ContainsKey(coord)) return _lookup[coord];
-            else throw new ArgumentException(coord.ToString());
+            else return default(TMapped);
         }
 
         public bool move(ICoordinate<TDimension> startCoord, ICoordinate<TDimension> endCoord)

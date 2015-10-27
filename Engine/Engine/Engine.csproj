@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attack\Command.cs" />
+    <Compile Include="Attack\AttackRequest.cs" />
+    <Compile Include="Attack\DestructionRequest.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Handler.cs" />
     <Compile Include="Mappings\Coordinates\Iso2D.cs" />

@@ -1,4 +1,5 @@
 ﻿using Engine;
+using Engine.Mappings;
 using Engine.Mappings.Coordinates;
 using Engine.Movement;
 using System;
@@ -7,10 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Draughts.Rules
+namespace Draughts.Rules.Board
 {
-    class MenCanOnlyMoveDiagonally : IMessageHandler
+    class PiecesCantMoveIntoACurrentlyOccupiedSquare : IMessageHandler
     {
+
+        SquareMap<Iso2D, Man> _map;
+
+        public PiecesCantMoveIntoACurrentlyOccupiedSquare(SquareMap<Iso2D, Man> map )
+        {
+            _map = map;
+        }
+
         public bool can_handle(Message message)
         {
             return false;
@@ -26,13 +35,10 @@ namespace Draughts.Rules
             if (!(message is MovementRequest<Iso2D>)) { return true; }
 
             var req = (MovementRequest<Iso2D>)message;
-            
-            Console.WriteLine("Assessing whether the man is moving diagonally");
 
-            int leftMove = Math.Abs(req.end.get_dimension_value(Iso2D.left) - req.mover.get_pos().get_dimension_value(Iso2D.left));
-            int rightMove = Math.Abs(req.end.get_dimension_value(Iso2D.right) - req.mover.get_pos().get_dimension_value(Iso2D.right));
-            return leftMove > 0 && rightMove > 0 && leftMove == rightMove;
+            Console.WriteLine("Assessing whether the move would take the piece into a space already occupied");
 
+            return _map.get_item_at_coord(req.end) == null;
 
         }
     }
