@@ -72,6 +72,8 @@ namespace Draughts
             IEngine engine = new SimpleEngine();
             engine.add_blocking_handler(new SquareMapEventHandler<Iso2D, Man>(map));
 
+            #region rules
+
             IEnumerable<IMessageHandler> menRules = new List<IMessageHandler>()
             {
                 new Rules.BlackMenMoveDownBoard(),
@@ -82,13 +84,19 @@ namespace Draughts
 
             engine.add_blocking_handler(new MultiAnd(menRules));
 
+            engine.add_blocking_handler(new Rules.Board.PiecesCantMoveOutsideBoard(2));
+
+            #endregion 
+
             Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>()
                 {
-                    end = new Iso2DCoord(2, 1),
-                    mover = map.get_item_at_coord(new Iso2DCoord(2,2))
+                    end = new Iso2DCoord(1,1),
+                    mover = map.get_item_at_coord(new Iso2DCoord(0,0))
                 };
 
             engine.send_message(req);
+
+            Console.WriteLine(map.get_item_at_coord(new Iso2DCoord(1, 1)).get_side());
 
             Console.Read();
 

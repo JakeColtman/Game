@@ -64,5 +64,10 @@ namespace Engine.Mappings.Coordinates
             return (_left.ToString() + "-" + _right.ToString()).GetHashCode();
         }
 
+        public override string ToString()
+        {
+            return _left.ToString() + "-" + _right.ToString();
+        }
+
     }
 }

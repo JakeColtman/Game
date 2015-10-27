@@ -74,7 +74,9 @@ namespace Engine
         {
             if (_handlers.All(x => x.will_allow(message)))
             {
-                _handlers.Where(x => x.can_handle(message)).Select(x => x.process(message));
+                Console.WriteLine("Move accepted");
+                
+                _handlers.Where(x => x.can_handle(message)).Select(x => x.process(message)).ToList();
             }
             else
             {

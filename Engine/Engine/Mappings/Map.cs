@@ -27,12 +27,14 @@ namespace Engine.Mappings
         public TMapped get_item_at_coord(ICoordinate<TDimension> coord)
         {
             if (_lookup.ContainsKey(coord)) return _lookup[coord];
-            else throw new ArgumentException("Doesn't exist");
+            else throw new ArgumentException(coord.ToString());
         }
 
         public bool move(ICoordinate<TDimension> startCoord, ICoordinate<TDimension> endCoord)
         {
+            Console.WriteLine(startCoord);
             add_to_coord(endCoord, get_item_at_coord(startCoord));
+            Console.WriteLine("Adding to new coord");
             remove_from_coord(startCoord);
             return true;
         }

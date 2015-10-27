@@ -32,7 +32,8 @@ namespace Draughts.Rules
             int leftMove = Math.Abs(req.end.get_dimension_value(Iso2D.left) - req.mover.get_pos().get_dimension_value(Iso2D.left));
             int rightMove = Math.Abs(req.end.get_dimension_value(Iso2D.right) - req.mover.get_pos().get_dimension_value(Iso2D.right));
             return leftMove > 0 && rightMove > 0;
-            
+
+
         }
     }
 }

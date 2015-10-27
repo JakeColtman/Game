@@ -20,6 +20,7 @@ namespace Engine.Mappings
        
         public bool can_handle(Message message)
         {
+            Console.WriteLine("Can square map handler the move?");
             return message is MovementRequest<TDimension>;
         }
 
