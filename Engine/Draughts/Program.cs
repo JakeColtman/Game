@@ -9,6 +9,7 @@ using Engine.Player;
 using Engine.Unit;
 using Engine.Mappings;
 using Engine.Movement;
+using Engine.Rules.Composition;
 
 namespace Draughts
 {
@@ -70,12 +71,21 @@ namespace Draughts
 
             IEngine engine = new SimpleEngine();
             engine.add_blocking_handler(new SquareMapEventHandler<Iso2D, Man>(map));
-            engine.add_blocking_handler(new Rules.MenMoveForwardOnly());
+
+            IEnumerable<IMessageHandler> menRules = new List<IMessageHandler>()
+            {
+                new Rules.BlackMenMoveDownBoard(),
+                new Rules.MenCanOnlyMoveOneSquare(),
+                new Rules.WhiteMenMoveOnlyUpBoard(),
+                new Rules.MenCanOnlyMoveDiagonally()
+            };
+
+            engine.add_blocking_handler(new MultiAnd(menRules));
 
             Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>()
                 {
-                    end = new Iso2DCoord(2, 4),
-                    mover = map.get_item_at_coord(new Iso2DCoord(0,2))
+                    end = new Iso2DCoord(2, 1),
+                    mover = map.get_item_at_coord(new Iso2DCoord(2,2))
                 };
 
             engine.send_message(req);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Rules.Composition
 {
-    class And : IMessageHandler
+    public class And : IMessageHandler
     {
 
         IMessageHandler _left;
@@ -33,4 +33,31 @@ namespace Engine.Rules.Composition
             return _left.will_allow(message) && _right.will_allow(message);
         }
     }
+
+    public class MultiAnd : IMessageHandler
+    {
+
+        IEnumerable<IMessageHandler> _handlers;
+
+        public MultiAnd(IEnumerable<IMessageHandler> handlers)
+        {
+            _handlers = handlers;
+        }
+
+        public bool can_handle(Message message)
+        {
+            return _handlers.All(x => x.can_handle(message));
+        }
+
+        public bool process(Message message)
+        {
+            return _handlers.Select(x => x.process(message)).All(x => x);
+        }
+
+        public bool will_allow(Message message)
+        {
+            return _handlers.All(x => x.will_allow(message));
+        }
+    }
+
 }

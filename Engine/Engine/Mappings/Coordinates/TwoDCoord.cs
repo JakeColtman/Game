@@ -36,7 +36,7 @@ namespace Engine.Mappings.Coordinates
 
         }
 
-        public int get_pos(TwoD dimension)
+        public int get_dimension_value(TwoD dimension)
         {
             switch (dimension)
             {

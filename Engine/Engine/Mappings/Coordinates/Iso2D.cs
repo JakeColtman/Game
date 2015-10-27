@@ -34,7 +34,7 @@ namespace Engine.Mappings.Coordinates
             }
         }
 
-        public int get_pos(Iso2D dimension)
+        public int get_dimension_value(Iso2D dimension)
         {
             if (dimension == Iso2D.left)
                 return _left;
@@ -56,7 +56,7 @@ namespace Engine.Mappings.Coordinates
 
         public bool Equals(ICoordinate<Iso2D> coord)
         {            
-            return coord.get_pos(Iso2D.left) == _left && coord.get_pos(Iso2D.right) == _right;
+            return coord.get_dimension_value(Iso2D.left) == _left && coord.get_dimension_value(Iso2D.right) == _right;
         }
 
         public override int GetHashCode()

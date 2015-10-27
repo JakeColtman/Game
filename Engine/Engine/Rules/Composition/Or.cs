@@ -8,7 +8,7 @@ namespace Engine.Rules.Composition
 {
     namespace Engine.Rules.Composition
     {
-        class And : IMessageHandler
+        public class And : IMessageHandler
         {
 
             IMessageHandler _left;

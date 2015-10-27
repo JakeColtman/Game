@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rules\MenMoveForwardOnly.cs" />
+    <Compile Include="Rules\Man\MenCanOnlyMoveDiagonally.cs" />
+    <Compile Include="Rules\Man\MenCanOnlyMoveOneSquare.cs" />
+    <Compile Include="Rules\Man\MenMovementDirection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
