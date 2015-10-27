@@ -56,9 +56,10 @@
     <Compile Include="Mappings\Units.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Moveable.cs" />
+    <Compile Include="Movement\Moveable.cs" />
+    <Compile Include="Movement\MovementRequest.cs" />
     <Compile Include="Player\TwoPlayers.cs" />
     <Compile Include="Unit\BaseMapHandler.cs" />
-    <Compile Include="Movement\MovementBus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stats\StatsHandler.cs" />

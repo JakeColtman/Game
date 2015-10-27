@@ -9,11 +9,7 @@ using Engine.Mappings.Coordinates;
 namespace Engine
 {
 
-    public interface IMoveable<T>
-    {
-        bool try_and_move(ICoordinate<T> end_coord);
-        ICoordinate<T> get_current_pos();
-    }
+
 
     public class TwoDMovementHandler : IMoveable<TwoD>
     {
