@@ -29,9 +29,7 @@ namespace Draughts.Rules
 
             Console.WriteLine("Assessing whether the man is only move one square");
 
-            int leftMove = Math.Abs(req.end.get_dimension_value(Iso2D.left) - req.mover.get_pos().get_dimension_value(Iso2D.left));
-            int rightMove = Math.Abs(req.end.get_dimension_value(Iso2D.right) - req.mover.get_pos().get_dimension_value(Iso2D.right));
-            return leftMove < 2 && rightMove < 2;
+            return req.movement.get_vector_for_dimension(Iso2D.left).get_distance() < 2 && req.movement.get_vector_for_dimension(Iso2D.right).get_distance() < 2;
 
         }
     }

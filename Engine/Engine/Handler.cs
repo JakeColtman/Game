@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public interface IMessageHandler
+    public interface IRepresentation
     {
-        bool can_handle(Message message);
-        bool will_allow(Message message);
-        bool process(Message message);
+        bool can_process(Message message);
+        bool add_message(Message message);
+        bool commit();
+        bool rollback();
     }
     
 }

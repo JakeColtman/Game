@@ -55,6 +55,7 @@
     <Compile Include="Mappings\Mapping.cs" />
     <Compile Include="Mappings\SquareMapEventHandler.cs" />
     <Compile Include="Mappings\Units.cs" />
+    <Compile Include="Mappings\Vector.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Moveable.cs" />
     <Compile Include="Movement\Moveable.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Player\TwoPlayers.cs" />
     <Compile Include="Rules\Composition\And.cs" />
     <Compile Include="Rules\Composition\Or.cs" />
+    <Compile Include="Rules\Rule.cs" />
     <Compile Include="Unit\BaseMapHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

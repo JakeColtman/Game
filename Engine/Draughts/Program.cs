@@ -91,7 +91,7 @@ namespace Draughts
             engine.add_blocking_handler(new MultiAnd(menRules));
 
             engine.add_blocking_handler(new Rules.Board.PiecesCantMoveOutsideBoard(2));
-            engine.add_blocking_handler(new Rules.Board.PiecesCantMoveIntoACurrentlyOccupiedSquare(map));
+            engine.add_blocking_handler(new Rules.Board.ManMovingIntoOccupiedSquareIsAttack(map));
 
             #endregion 
 

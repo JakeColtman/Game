@@ -8,16 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Draughts.Rules.Board
+namespace Draughts.Rules.Attack
 {
-    class PiecesCantMoveIntoACurrentlyOccupiedSquare : IMessageHandler
+    class ManJumpsTheAttackedPiece : IMessageHandler
     {
 
         SquareMap<Iso2D, Man> _map;
+        IEngine _engine;
 
-        public PiecesCantMoveIntoACurrentlyOccupiedSquare(SquareMap<Iso2D, Man> map )
+        public ManJumpsTheAttackedPiece(IEngine engine, SquareMap<Iso2D, Man> map)
         {
             _map = map;
+            _engine = engine;
         }
 
         public bool can_handle(Message message)
@@ -32,13 +34,13 @@ namespace Draughts.Rules.Board
 
         public bool will_allow(Message message)
         {
-            if (!(message is MovementRequest<Iso2D>)) { return true; }
+            if (!(message is Engine.Attack.AttackRequest<Iso2D>)) { return true; }
 
-            var req = (MovementRequest<Iso2D>)message;
+            var req = (Engine.Attack.AttackRequest<Iso2D>)message;
 
-            Console.WriteLine("Assessing whether the move would take the piece into a space already occupied");
+            Console.WriteLine("Determining whether the attacked piece is of the opposite side");
 
-            return _map.get_item_at_coord(req.end) == null;
+            return req.attacked.get_side() != req.attacker.get_side();
 
         }
     }

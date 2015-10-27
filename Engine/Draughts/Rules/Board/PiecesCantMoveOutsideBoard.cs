@@ -1,6 +1,7 @@
 ﻿using Engine;
 using Engine.Mappings.Coordinates;
 using Engine.Movement;
+using Engine.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Draughts.Rules.Board
 {
-    class PiecesCantMoveOutsideBoard : IMessageHandler
+    class PiecesCantMoveOutsideBoard : IRule
     {
 
         int _maxSize;
@@ -18,17 +19,7 @@ namespace Draughts.Rules.Board
         {
             _maxSize = maxSize;
         }
-
-        public bool can_handle(Message message)
-        {
-            return false;
-        }
-
-        public bool process(Message message)
-        {
-            return true;
-        }
-
+        
         public bool will_allow(Message message)
         {
             if (!(message is MovementRequest<Iso2D>)) { return true; }
@@ -37,10 +28,16 @@ namespace Draughts.Rules.Board
 
             Console.WriteLine("Assessing whether the move would take the piece outside the board");
 
-            bool nonNeg = req.end.get_dimension_value(Iso2D.left) >= 0 && req.end.get_dimension_value(Iso2D.right) >= 0;
-            bool nonOverMaxed = req.end.get_dimension_value(Iso2D.left) <= _maxSize && req.end.get_dimension_value(Iso2D.right) <= _maxSize;
+            int currentLeft = req.mover.get_pos().get_dimension_value(Iso2D.left);
+            int currentRight = req.mover.get_pos().get_dimension_value(Iso2D.right);
 
-            return nonNeg && nonOverMaxed;
+            int deltaLeft = (int)req.movement.get_vector_for_dimension(Iso2D.left).get_direction() * req.movement.get_vector_for_dimension(Iso2D.left).get_distance();
+            int deltaRight = (int)req.movement.get_vector_for_dimension(Iso2D.right).get_direction() * req.movement.get_vector_for_dimension(Iso2D.right).get_distance();
+
+            bool nonNeg = currentLeft + deltaLeft >= 0 && currentRight + deltaRight >= 0;
+            bool nonOverMax = currentLeft + deltaLeft <= _maxSize  && currentRight + deltaRight >= _maxSize;
+           
+            return nonNeg && nonOverMax;
 
         }
     }

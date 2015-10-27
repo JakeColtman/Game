@@ -1,4 +1,5 @@
-﻿using Engine.Mappings.Coordinates;
+﻿using Engine.Mappings;
+using Engine.Mappings.Coordinates;
 using Engine.Unit;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,6 @@ namespace Engine.Movement
     public class MovementRequest<T> : Message
     {
         public IEntity<T> mover;
-        public ICoordinate<T> end;
+        public IMovement<T> movement;
     }
 }
