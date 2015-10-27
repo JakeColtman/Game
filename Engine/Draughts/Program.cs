@@ -8,19 +8,30 @@ using Engine.Mappings.Coordinates;
 using Engine.Player;
 using Engine.Unit;
 using Engine.Mappings;
+using Engine.Movement;
 
 namespace Draughts
 {
 
-    class Man
+    class Man :IEntity<Iso2D>
     {
-        public ICoordinate<Iso2D> _pos;
-        public TwoPlayers _side;
+        ICoordinate<Iso2D> _pos;
+        TwoPlayers _side;
 
         public Man(ICoordinate<Iso2D> position, TwoPlayers side)
         {
             _pos = position;
             _side = side;
+        }
+
+        public TwoPlayers get_side()
+        {
+            return _side;
+        }
+
+        ICoordinate<Iso2D> IEntity<Iso2D>.get_pos()
+        {
+            return _pos;
         }
     }
 
@@ -61,7 +72,11 @@ namespace Draughts
             engine.add_blocking_handler(new SquareMapEventHandler<Iso2D, Man>(map));
             engine.add_blocking_handler(new Rules.MenMoveForwardOnly());
 
-            Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>() { end = new Iso2DCoord(2, 4), start = new Iso2DCoord(1, 3)};
+            Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>()
+                {
+                    end = new Iso2DCoord(2, 4),
+                    mover = map.get_item_at_coord(new Iso2DCoord(0,2))
+                };
 
             engine.send_message(req);
 

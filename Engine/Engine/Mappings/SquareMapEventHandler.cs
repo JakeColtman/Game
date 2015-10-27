@@ -31,7 +31,7 @@ namespace Engine.Mappings
         public bool process(Message message)
         {
             var req = (MovementRequest<TDimension>)message;
-            _map.move(req.start, req.end);
+            _map.move(req.mover.get_pos(),req.end);
             return true;
         }
     }

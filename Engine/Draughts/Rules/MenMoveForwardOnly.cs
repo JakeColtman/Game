@@ -28,8 +28,8 @@ namespace Draughts.Rules
 
             var req = (MovementRequest<Iso2D>)message;
             
-            return (req.end.get_pos(Iso2D.left) >= req.start.get_pos(Iso2D.left)) &
-                        (req.end.get_pos(Iso2D.right) >= req.start.get_pos(Iso2D.right));
+            return (req.end.get_pos(Iso2D.left) >= req.mover.get_pos().get_pos(Iso2D.left)) &
+                        (req.end.get_pos(Iso2D.right) >= req.mover.get_pos().get_pos(Iso2D.right));
 
         }
        
