@@ -59,6 +59,8 @@
     <Compile Include="Movement\Moveable.cs" />
     <Compile Include="Movement\MovementRequest.cs" />
     <Compile Include="Player\TwoPlayers.cs" />
+    <Compile Include="Rules\Composition\And.cs" />
+    <Compile Include="Rules\Composition\Or.cs" />
     <Compile Include="Unit\BaseMapHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
