@@ -23,8 +23,10 @@ namespace Engine.Geometry
         {
             if (direction is Left) return new TwoDSquareGridPoint(_x - 1, _y);
             if (direction is Right) return new TwoDSquareGridPoint(_x + 1, _y);
-            if (direction is Up) return new TwoDSquareGridPoint(_x, _y);
-            if (direction is Down) return new TwoDSquareGridPoint(_x , _y);
+            if (direction is Up) return new TwoDSquareGridPoint(_x, _y + 1);
+            if (direction is Down) return new TwoDSquareGridPoint(_x , _y - 1);
+
+            throw new NotImplementedException(direction.ToString() + " is not a valid dimension");
         }
     }
 }

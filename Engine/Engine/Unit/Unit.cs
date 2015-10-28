@@ -1,4 +1,5 @@
-﻿using Engine.Mappings.Coordinates;
+﻿using Engine.Geometry;
+using Engine.Mappings.Coordinates;
 using Engine.Movement;
 using Engine.Player;
 using System;
@@ -9,12 +10,18 @@ using System.Threading.Tasks;
 
 namespace Engine.Unit
 {
-    public interface IEntity<T>
+    //public interface IEntity<T>
+    //{
+    //    TwoPlayers get_side();
+    //    ICoordinate<T> get_pos();
+    //    bool set_pos(ICoordinate<T> new_pos);
+    //    //IMoveable<T> get_movement_handler();
+    //}
+
+    public interface IEntity
     {
         TwoPlayers get_side();
-        ICoordinate<T> get_pos();
-        bool set_pos(ICoordinate<T> new_pos);
-        //IMoveable<T> get_movement_handler();
+        IPoint get_pos();
     }
     
 }

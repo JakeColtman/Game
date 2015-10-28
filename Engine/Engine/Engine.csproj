@@ -46,6 +46,9 @@
     <Compile Include="Attack\AttackRequest.cs" />
     <Compile Include="Attack\DestructionRequest.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="Geometry\Directions\Custom\Chess\KnightDirections.cs" />
+    <Compile Include="Geometry\Directions\Custom\Draughts\BlackManDirections.cs" />
+    <Compile Include="Geometry\Directions\Custom\Draughts\WhiteManDirections.cs" />
     <Compile Include="Geometry\Directions\Direction.cs" />
     <Compile Include="Geometry\Directions\Default\TwoDGridDirections.cs" />
     <Compile Include="Geometry\Points\IPoint.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Message.cs" />
     <Compile Include="Moveable.cs" />
     <Compile Include="Movement\Moveable.cs" />
+    <Compile Include="Movement\IMovement.cs" />
     <Compile Include="Movement\MovementRequest.cs" />
     <Compile Include="Movement\MovementRequestFactory.cs" />
     <Compile Include="Player\TwoPlayers.cs" />
@@ -83,7 +87,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Geometry\Directions\Custom\Chess\" />
     <Folder Include="Geometry\Points\Custom\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

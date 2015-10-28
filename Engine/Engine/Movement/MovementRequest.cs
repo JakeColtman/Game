@@ -1,4 +1,5 @@
-﻿using Engine.Mappings;
+﻿using Engine.Geometry;
+using Engine.Mappings;
 using Engine.Mappings.Coordinates;
 using Engine.Unit;
 using System;
@@ -9,40 +10,30 @@ using System.Threading.Tasks;
 
 namespace Engine.Movement
 {
-    public class MovementRequest<T> : Message
+    public class MovementRequest : Message
     {
+        IEntity _mover;
+        IMovement _movement;
 
-        ICoordinateFactory<T> _factory;
-
-        public MovementRequest(ICoordinateFactory<T> factory)
+        public MovementRequest(IEntity mover, IMovement movement )
         {
-            _factory = factory;
+            _mover = mover;
+            _movement = movement;
         }
-
-        public IEntity<T> mover;
-        public IMovement<T> movement;
-        public ICoordinate<T> get_final_position()
+              
+        public IPoint get_final_position()
         {
 
-            Dictionary<T, int> dimensionValues = new Dictionary<T, int>();
+            IPoint start = _mover.get_pos();
 
-            foreach(T dimension in mover.get_pos().get_dimensions())
+            foreach(Geometry.Direction direction in _movement.get_directions())
             {
-                int currentVal = mover.get_pos().get_dimension_value(dimension);
-                int deltaVal = (int)movement.get_vector_for_dimension(dimension).get_direction() * movement.get_vector_for_dimension(dimension).get_distance();
-                dimensionValues.Add(dimension, currentVal + deltaVal);
+                start = start.get_next_point_in_direction(direction);
             }
 
-            return _factory.create(dimensionValues);
+            return start;
         }
 
     }
-
-    //public class Iso2DMovementRequest : MovementRequest<Iso2D>
-    //{
-    //    public override ICoordinate<Iso2D> get_final_position()
-    //    {
-    //        return get_final_position(x => new Iso2DCoord(x[Iso2D.left], x[Iso2D.right]));
-    //    }
-    //}
+   
 }
