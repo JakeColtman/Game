@@ -2,6 +2,7 @@
 using Engine.Mappings;
 using Engine.Mappings.Coordinates;
 using Engine.Movement;
+using Engine.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,38 +11,14 @@ using System.Threading.Tasks;
 
 namespace Draughts.Rules.Attack
 {
-    class ManJumpsTheAttackedPiece : IMessageHandler
+    class ManJumpsTheAttackedPiece : IRule
     {
-
-        SquareMap<Iso2D, Man> _map;
-        IEngine _engine;
-
-        public ManJumpsTheAttackedPiece(IEngine engine, SquareMap<Iso2D, Man> map)
+        public Message process(Message message)
         {
-            _map = map;
-            _engine = engine;
+            //Make the same move again to jump to the next space
+            MovementRequest<Iso2D> req = message as MovementRequest<Iso2D>;
+            return req;
         }
-
-        public bool can_handle(Message message)
-        {
-            return false;
-        }
-
-        public bool process(Message message)
-        {
-            return true;
-        }
-
-        public bool will_allow(Message message)
-        {
-            if (!(message is Engine.Attack.AttackRequest<Iso2D>)) { return true; }
-
-            var req = (Engine.Attack.AttackRequest<Iso2D>)message;
-
-            Console.WriteLine("Determining whether the attacked piece is of the opposite side");
-
-            return req.attacked.get_side() != req.attacker.get_side();
-
-        }
+                
     }
 }

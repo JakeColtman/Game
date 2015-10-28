@@ -8,42 +8,44 @@ using System.Threading.Tasks;
 
 namespace Engine.Mappings
 {
-    public class SquareMapEventHandler<TDimension, TMapped> : IMessageHandler
+    public class SquareMapEventHandler<TDimension, TMapped> : IHandler
     {
 
-        SquareMap<TDimension, TMapped> _map;
+        SquareMap<TDimension, TMapped> _confirmed_map;
+        SquareMap<TDimension, TMapped> _unconfirmed_map;
 
         public SquareMapEventHandler(SquareMap<TDimension, TMapped> map)
         {
-            _map = map;
-        }
-       
-        public bool can_handle(Message message)
-        {
-            Console.WriteLine("Can square map handler the move?");
-            return message is MovementRequest<TDimension>  || message is Engine.Attack.DestructionRequest<TDimension>;
+            _confirmed_map = map;
+            _unconfirmed_map = map;
         }
 
-        public bool will_allow(Message message)
+        public bool commit()
         {
+            _confirmed_map = _unconfirmed_map;
             return true;
         }
 
-        public bool process(Message message)
+        public bool pass_message(Message message)
         {
-
-            if(message is MovementRequest<TDimension>)
+            if(message is Iso2DMovementRequest)
             {
-                var req = (MovementRequest<TDimension>)message;
-                _map.move(req.mover.get_pos(), req.end);
-                req.mover.set_pos(req.end);
+                var req = message as Iso2DMovementRequest;
+                _unconfirmed_map = _unconfirmed_map.move(req.mover.get_pos(), req.get_final_position());
+                req.mover.set_pos(req.mover.get_pos());
             }
             else
             {
-                var req = (Engine.Attack.DestructionRequest<TDimension>)message;
-                _map.remove_from_coord(req.position);
+               // var req = (Engine.Attack.DestructionRequest<TDimension>)message;
+               // _map.remove_from_coord(req.position);
             }
             return true;
+        }
+
+        public bool rollback()
+        {
+            _unconfirmed_map = _confirmed_map;
+            return false;
         }
     }
 }

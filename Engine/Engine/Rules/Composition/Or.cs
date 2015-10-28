@@ -8,13 +8,13 @@ namespace Engine.Rules.Composition
 {
     namespace Engine.Rules.Composition
     {
-        public class Or : IRule
+        public class Or : IBlockingRule
         {
 
-            IMessageHandler _left;
-            IMessageHandler _right;
+            IBlockingRule _left;
+            IBlockingRule _right;
 
-            public Or(IMessageHandler left, IMessageHandler right)
+            public Or(IBlockingRule left, IBlockingRule right)
             {
                 _left = left;
                 _right = right;

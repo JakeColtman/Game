@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Engine.Rules.Composition
 {
-    public class And : IRule
+    public class And : IBlockingRule
     {
 
-        IRule _left;
-        IRule _right;
+        IBlockingRule _left;
+        IBlockingRule _right;
 
-        public And(IRule left, IRule right)
+        public And(IBlockingRule left, IBlockingRule right)
         {
             _left = left;
             _right = right;
@@ -24,12 +24,12 @@ namespace Engine.Rules.Composition
         }
     }
 
-    public class MultiAnd : IRule
+    public class MultiAnd : IBlockingRule
     {
 
-        IEnumerable<IRule> _handlers;
+        IEnumerable<IBlockingRule> _handlers;
 
-        public MultiAnd(IEnumerable<IRule> handlers)
+        public MultiAnd(IEnumerable<IBlockingRule> handlers)
         {
             _handlers = handlers;
         }

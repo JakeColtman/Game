@@ -10,6 +10,7 @@ using Engine.Unit;
 using Engine.Mappings;
 using Engine.Movement;
 using Engine.Rules.Composition;
+using Engine.Rules;
 
 namespace Draughts
 {
@@ -76,11 +77,11 @@ namespace Draughts
             setup.ForEach(x => map.add_to_coord(x.position, manFactory.create(x)));
 
             IEngine engine = new SimpleEngine();
-            engine.add_blocking_handler(new SquareMapEventHandler<Iso2D, Man>(map));
+            engine.add_handler(new SquareMapEventHandler<Iso2D, Man>(map));
 
             #region rules
 
-            IEnumerable<IMessageHandler> menRules = new List<IMessageHandler>()
+            IEnumerable<IBlockingRule> menRules = new List<IBlockingRule>()
             {
                 new Rules.BlackMenMoveDownBoard(),
                 new Rules.MenCanOnlyMoveOneSquare(),
@@ -88,29 +89,29 @@ namespace Draughts
                 new Rules.MenCanOnlyMoveDiagonally()
             };
 
-            engine.add_blocking_handler(new MultiAnd(menRules));
+            engine.add_rule(new MultiAnd(menRules));
 
-            engine.add_blocking_handler(new Rules.Board.PiecesCantMoveOutsideBoard(2));
-            engine.add_blocking_handler(new Rules.Board.ManMovingIntoOccupiedSquareIsAttack(map));
+           // engine.add_blocking_handler(new Rules.Board.PiecesCantMoveOutsideBoard(2));
+           // engine.add_blocking_handler(new Rules.Board.ManMovingIntoOccupiedSquareIsAttack(map));
 
             #endregion 
 
-            Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>()
-                {
-                    end = new Iso2DCoord(1,1),
-                    mover = map.get_item_at_coord(new Iso2DCoord(0,0))
-                };
-            engine.send_message(req);
-            Console.WriteLine("Made move one");
-            Console.WriteLine(map.get_item_at_coord(new Iso2DCoord(1, 1)).get_side());
-            Engine.Movement.MovementRequest<Iso2D> req2 = new Engine.Movement.MovementRequest<Iso2D>()
-            {
-                end = new Iso2DCoord(2, 2),
-                mover = map.get_item_at_coord(new Iso2DCoord(1,1))
-            };
+            //Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>()
+            //    {
+            //        end = new Iso2DCoord(1,1),
+            //        mover = map.get_item_at_coord(new Iso2DCoord(0,0))
+            //    };
+            //engine.send_message(req);
+            //Console.WriteLine("Made move one");
+            //Console.WriteLine(map.get_item_at_coord(new Iso2DCoord(1, 1)).get_side());
+            //Engine.Movement.MovementRequest<Iso2D> req2 = new Engine.Movement.MovementRequest<Iso2D>()
+            //{
+            //    end = new Iso2DCoord(2, 2),
+            //    mover = map.get_item_at_coord(new Iso2DCoord(1,1))
+            //};
 
             
-            engine.send_message(req2);
+         //   engine.send_message(req2);
            // Console.WriteLine(map.get_item_at_coord(new Iso2DCoord(1, 1)).get_side());
 
             Console.Read();

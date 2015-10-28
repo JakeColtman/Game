@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Draughts.Rules.Attack
 {
-    class AttackedUnitMustBeDifferentSide : IRule
+    class AttackedUnitMustBeDifferentSide : IBlockingRule
     {
 
         SquareMap<Iso2D, Man> _map;

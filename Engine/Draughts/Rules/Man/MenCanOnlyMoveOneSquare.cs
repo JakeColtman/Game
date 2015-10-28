@@ -1,6 +1,7 @@
 ﻿using Engine;
 using Engine.Mappings.Coordinates;
 using Engine.Movement;
+using Engine.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,8 @@ using System.Threading.Tasks;
 
 namespace Draughts.Rules
 {
-    class MenCanOnlyMoveOneSquare : IMessageHandler
+    class MenCanOnlyMoveOneSquare : IBlockingRule
     {
-        public bool can_handle(Message message)
-        {
-            return false;
-        }
-
-        public bool process(Message message)
-        {
-            return true;
-        }
 
         public bool will_allow(Message message)
         {

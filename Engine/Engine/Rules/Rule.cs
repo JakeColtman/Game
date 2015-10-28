@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Engine.Rules
 {
+
     public interface IRule
     {
-        bool will_allow(Message message);
+        Message process(Message message);
     }
+
+
 }

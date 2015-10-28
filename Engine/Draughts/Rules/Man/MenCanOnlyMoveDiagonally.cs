@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Draughts.Rules
 {
-    class MenCanOnlyMoveDiagonally : IRule
+    class MenCanOnlyMoveDiagonally : IBlockingRule
     {
         public bool will_allow(Message message)
         {

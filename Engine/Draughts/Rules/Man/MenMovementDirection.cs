@@ -10,7 +10,7 @@ using Engine.Rules;
 
 namespace Draughts.Rules
 {
-    public class WhiteMenMoveOnlyUpBoard : IRule
+    public class WhiteMenMoveOnlyUpBoard : IBlockingRule
     {
         public bool will_allow(Message message)
         {
@@ -22,12 +22,12 @@ namespace Draughts.Rules
             if (req.mover.get_side() == Engine.Player.TwoPlayers.black) return true;
             Console.WriteLine("Assessing whether white piece moving up board");
             return req.movement.get_vector_for_dimension(Iso2D.left).get_direction() == Direction.forward &&
-                    req.movement.get_vector_for_dimension(Iso2D.right).get_direction() == Direction.forward
+                    req.movement.get_vector_for_dimension(Iso2D.right).get_direction() == Direction.forward;
 
         }       
     }
 
-    public class BlackMenMoveDownBoard : IRule
+    public class BlackMenMoveDownBoard : IBlockingRule
     {
      
         public bool will_allow(Message message)
@@ -40,7 +40,7 @@ namespace Draughts.Rules
             if (req.mover.get_side() == Engine.Player.TwoPlayers.white) return true;
             Console.WriteLine("Assessing whether black piece moving down board");
             return req.movement.get_vector_for_dimension(Iso2D.left).get_direction() == Direction.backwards &&
-                    req.movement.get_vector_for_dimension(Iso2D.right).get_direction() == Direction.backwards
+                    req.movement.get_vector_for_dimension(Iso2D.right).get_direction() == Direction.backwards;
 
         }
     }

@@ -51,7 +51,7 @@
     <Compile Include="Mappings\Coordinates\TwoDCoord.cs" />
     <Compile Include="Mappings\Coordinates\Dimensions.cs" />
     <Compile Include="Mappings\Coordinates\ICoord.cs" />
-    <Compile Include="Mappings\Map.cs" />
+    <Compile Include="Mappings\SquareMap.cs" />
     <Compile Include="Mappings\Mapping.cs" />
     <Compile Include="Mappings\SquareMapEventHandler.cs" />
     <Compile Include="Mappings\Units.cs" />
@@ -60,9 +60,11 @@
     <Compile Include="Moveable.cs" />
     <Compile Include="Movement\Moveable.cs" />
     <Compile Include="Movement\MovementRequest.cs" />
+    <Compile Include="Movement\MovementRequestFactory.cs" />
     <Compile Include="Player\TwoPlayers.cs" />
     <Compile Include="Rules\Composition\And.cs" />
     <Compile Include="Rules\Composition\Or.cs" />
+    <Compile Include="Rules\BlockingRule.cs" />
     <Compile Include="Rules\Rule.cs" />
     <Compile Include="Unit\BaseMapHandler.cs" />
     <Compile Include="Program.cs" />

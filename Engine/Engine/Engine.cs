@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.Rules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,9 @@ namespace Engine
     public interface IEngine
     {
         void send_message(Message message);
-        void add_blocking_handler(IMessageHandler handler);
-        void confirm();
+        void add_rule(IBlockingRule rule);
+        void add_handler(IHandler handler);
+        void commit();
         void rollback();           
     }
 
@@ -46,37 +48,43 @@ namespace Engine
     {
 
         List<IMessage> _unconfirmed_messages;
-        List<IMessageHandler> _handlers;
+        List<IHandler> _handlers;
+        List<IBlockingRule> _rules;
 
         public SimpleEngine()
         {
             _unconfirmed_messages = new List<IMessage>();
-            _handlers = new List<IMessageHandler>();
+            _handlers = new List<IHandler>();
+            _rules = new List<IBlockingRule>();
         }
 
-        public void add_blocking_handler(IMessageHandler handler)
+        public void add_rule(IBlockingRule rule)
+        {
+            _rules.Add(rule);
+        }
+
+        public void add_handler(IHandler handler)
         {
             _handlers.Add(handler);
         }
 
-        public void confirm()
+        public void commit()
         {
-            _unconfirmed_messages.Clear();
+            _handlers.ForEach(x => x.commit());
         }
 
         public void rollback()
         {
-            _unconfirmed_messages.Select(x => new UndoMessage(x)).ToList().ForEach(x => send_message(x));
-            confirm();
+            _handlers.ForEach(x => x.rollback());
         }
 
         public void send_message(Message message)
         {
-            if (_handlers.All(x => x.will_allow(message)))
+            if (_rules.All(x => x.will_allow(message)))
             {
                 Console.WriteLine("Move accepted");
                 
-                _handlers.Where(x => x.can_handle(message)).Select(x => x.process(message)).ToList();
+                _handlers.ForEach(x => x.pass_message(message));
             }
             else
             {
