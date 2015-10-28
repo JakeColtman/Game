@@ -91,10 +91,19 @@ namespace Draughts
 
             engine.add_rule(new MultiAnd(menRules));
 
-           // engine.add_blocking_handler(new Rules.Board.PiecesCantMoveOutsideBoard(2));
-           // engine.add_blocking_handler(new Rules.Board.ManMovingIntoOccupiedSquareIsAttack(map));
+            //engine.add_blocking_handler(new Rules.Board.PiecesCantMoveOutsideBoard(2));
+            // engine.add_blocking_handler(new Rules.Board.ManMovingIntoOccupiedSquareIsAttack(map));
 
-            #endregion 
+            #endregion
+
+            Engine.Movement.ICoordinateFactory<Iso2D> coordinateFactory = new Iso2DCoordinateFactory();
+
+            MovementRequest<Iso2D> req = new MovementRequest<Iso2D>(coordinateFactory){
+                    movement = new Iso2DMovement(new Vector<Iso2D>() { d})
+                    mover = map.get_item_at_coord(new Iso2DCoord(0,0))
+                };
+
+
 
             //Engine.Movement.MovementRequest<Iso2D> req = new Engine.Movement.MovementRequest<Iso2D>()
             //    {
@@ -110,9 +119,9 @@ namespace Draughts
             //    mover = map.get_item_at_coord(new Iso2DCoord(1,1))
             //};
 
-            
-         //   engine.send_message(req2);
-           // Console.WriteLine(map.get_item_at_coord(new Iso2DCoord(1, 1)).get_side());
+
+            //   engine.send_message(req2);
+            // Console.WriteLine(map.get_item_at_coord(new Iso2DCoord(1, 1)).get_side());
 
             Console.Read();
 

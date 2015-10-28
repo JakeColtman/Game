@@ -22,7 +22,7 @@ namespace Engine.Mappings.Coordinates
             this.y = y;
         }
 
-        public ICoordinate<TwoD> get_next(Vector<TwoD> vector)
+        public ICoordinate<TwoD> get_next(Direction direction)
         {
 
             if(vector._dimension == TwoD.x)
