@@ -36,6 +36,11 @@ namespace Engine.Mappings.Coordinates
 
         }
 
+        public List<TwoD> get_dimensions()
+        {
+            return new List<TwoD>() { TwoD.x, TwoD.y };
+        }
+
         public int get_dimension_value(TwoD dimension)
         {
             switch (dimension)

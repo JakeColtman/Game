@@ -22,9 +22,9 @@ namespace Draughts.Rules.Board
         
         public bool will_allow(Message message)
         {
-            if (!(message is Iso2DMovementRequest)) { return true; }
+            if (!(message is MovementRequest)) { return true; }
 
-            var req = message as Iso2DMovementRequest;
+            var req = message as MovementRequest;
 
             Console.WriteLine("Assessing whether the move would take the piece outside the board");
                         

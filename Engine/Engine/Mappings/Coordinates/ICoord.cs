@@ -9,6 +9,7 @@ namespace Engine.Mappings.Coordinates
     public interface ICoordinate<T>
     {
         int get_dimension_value(T dimension);
+        List<T> get_dimensions();
         ICoordinate<T> get_next(Vector<T> vector);
         
     }

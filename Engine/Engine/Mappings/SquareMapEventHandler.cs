@@ -28,9 +28,9 @@ namespace Engine.Mappings
 
         public bool pass_message(Message message)
         {
-            if(message is Iso2DMovementRequest)
+            if(message is MovementRequest)
             {
-                var req = message as Iso2DMovementRequest;
+                var req = message as MovementRequest;
                 _unconfirmed_map = _unconfirmed_map.move(req.mover.get_pos(), req.get_final_position());
                 req.mover.set_pos(req.mover.get_pos());
             }
