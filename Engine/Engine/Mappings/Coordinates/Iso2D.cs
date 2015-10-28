@@ -69,5 +69,9 @@ namespace Engine.Mappings.Coordinates
             return _left.ToString() + "-" + _right.ToString();
         }
 
+        public List<Iso2D> get_dimensions()
+        {
+            return new List<Iso2D>() { Iso2D.right, Iso2D.left };
+        }
     }
 }

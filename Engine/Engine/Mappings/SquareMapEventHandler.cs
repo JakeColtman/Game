@@ -28,9 +28,9 @@ namespace Engine.Mappings
 
         public bool pass_message(Message message)
         {
-            if(message is MovementRequest)
+            if(message is MovementRequest<TDimension>)
             {
-                var req = message as MovementRequest;
+                var req = message as MovementRequest<TDimension>;
                 _unconfirmed_map = _unconfirmed_map.move(req.mover.get_pos(), req.get_final_position());
                 req.mover.set_pos(req.mover.get_pos());
             }
