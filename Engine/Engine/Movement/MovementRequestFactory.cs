@@ -8,10 +8,16 @@ using Engine.Mappings.Coordinates;
 
 namespace Engine.Movement
 {
-    //public class Iso2DMovementFactory
-    //{
+    public interface ICoordinateFactory<T>
+    {
+        ICoordinate<T> create(Dictionary<T, int> values);
+    }
 
-    //    public IMovement<Iso2D> create()
-
-    //}
+    public class Iso2DCoordinateFactory : ICoordinateFactory<Iso2D>
+    {
+        public ICoordinate<Iso2D> create(Dictionary<Iso2D, int> values)
+        {
+            return new Iso2DCoord(values[Iso2D.left], values[Iso2D.right]);
+        }
+    }
 }

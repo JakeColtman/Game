@@ -12,10 +12,11 @@ namespace Engine.Movement
     public class MovementRequest<T> : Message
     {
 
-        Func<Dictionary<T, int>, ICoordinate<T>> _constructor;
+        ICoordinateFactory<T> _factory;
 
-        public MovementRequest(Func<Dictionary<T, int>, ICoordinate<T>> constructor){
-            _constructor = constructor;
+        public MovementRequest(ICoordinateFactory<T> factory)
+        {
+            _factory = factory;
         }
 
         public IEntity<T> mover;
@@ -32,7 +33,7 @@ namespace Engine.Movement
                 dimensionValues.Add(dimension, currentVal + deltaVal);
             }
 
-            return _constructor(dimensionValues);
+            return _factory.create(dimensionValues);
         }
 
     }
