@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Engine;
-using Engine.Mappings;
-using Engine.Mappings.Coordinates;
-using Engine.Movement;
 using Engine.Unit;
 
 namespace Game

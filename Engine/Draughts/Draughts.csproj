@@ -45,14 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rules\Attack\AttackedUnitMustBeDifferentSide.cs" />
-    <Compile Include="Rules\Attack\ManJumpsTheAttackedPiece.cs" />
-    <Compile Include="Rules\Board\ManMovingIntoOccupiedSquareIsAttack.cs" />
-    <Compile Include="Rules\Board\PiecesCantMoveOutsideBoard.cs" />
-    <Compile Include="Rules\Man\ManCanJumpToTake.cs" />
-    <Compile Include="Rules\Man\MenCanOnlyMoveDiagonally.cs" />
-    <Compile Include="Rules\Man\MenCanOnlyMoveOneSquare.cs" />
-    <Compile Include="Rules\Man\MenMovementDirection.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -62,6 +54,11 @@
       <Project>{b74c45eb-aa36-4855-86d7-8e796f21009a}</Project>
       <Name>Engine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Rules\Attack\" />
+    <Folder Include="Rules\Board\" />
+    <Folder Include="Rules\Man\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

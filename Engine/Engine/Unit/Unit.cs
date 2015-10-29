@@ -1,5 +1,4 @@
 ﻿using Engine.Geometry;
-using Engine.Mappings.Coordinates;
 using Engine.Movement;
 using Engine.Player;
 using System;

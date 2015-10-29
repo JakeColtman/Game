@@ -1,6 +1,5 @@
 ﻿using Engine.Geometry;
 using Engine.Mappings;
-using Engine.Mappings.Coordinates;
 using Engine.Unit;
 using System;
 using System.Collections.Generic;
