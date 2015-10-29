@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace Engine.Maps
 {
 
-    public interface IPointMapReader
+    public interface IMapReader<T>
     {
         //Implementing this you'll probably want to inject something to parse the coordinates into the right form
-        IPoint get_point_by_coordinate(Coordinate coord); 
+        T get_from_coordinate(Coordinate coord); 
     }  
 
 }
