@@ -7,41 +7,41 @@ using Engine.Geometry;
 namespace Draughts
 {
 
-    class Man :IEntity
-    {
-        Coordinate _pos;
-        TwoPlayers _side;
+    //class Man :IEntity
+    //{
+    //    Coordinate _pos;
+    //    TwoPlayers _side;
 
-        public Man(Coordinate position, TwoPlayers side)
-        {
-            _pos = position;
-            _side = side;
-        }
+    //    public Man(Coordinate position, TwoPlayers side)
+    //    {
+    //        _pos = position;
+    //        _side = side;
+    //    }
 
-        public IPoint get_pos()
-        {
-            throw new NotImplementedException();
-        }
+    //    public IPoint get_pos()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public TwoPlayers get_side()
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //    public TwoPlayers get_side()
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 
-    struct ManCreationInstruction
-    {
-        public Coordinate position;
-        public TwoPlayers side;
-    }
+    //struct ManCreationInstruction
+    //{
+    //    public Coordinate position;
+    //    public TwoPlayers side;
+    //}
 
-    class ManFactory : IUnitFactory<ManCreationInstruction, Man>
-    {
-        public Man create(ManCreationInstruction instruction)
-        {
-            return new Man(instruction.position, instruction.side);
-        }
-    }
+    //class ManFactory : IUnitFactory<ManCreationInstruction, Man>
+    //{
+    //    public Man create(ManCreationInstruction instruction)
+    //    {
+    //        return new Man(instruction.position, instruction.side);
+    //    }
+    //}
 
     class Program
     {

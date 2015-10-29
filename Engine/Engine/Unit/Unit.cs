@@ -1,4 +1,5 @@
 ﻿using Engine.Geometry;
+using Engine.Geometry.Coordinates;
 using Engine.Movement;
 using Engine.Player;
 using System;
@@ -21,6 +22,7 @@ namespace Engine.Unit
     {
         TwoPlayers get_side();
         IPoint get_pos();
+        IEntity move_in_direction(Direction direction);
     }
     
 }
