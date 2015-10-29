@@ -9,17 +9,18 @@ using Engine.Geometry.Coordinates.Default;
 
 namespace Engine.Maps
 {
-    class TwoDGridMap : IPointMapReader
+    class IsometricMap : IPointMapReader
     {
         // Simple infinitely extendable 2D grid of points.  Will provide multiple different objects if asked for the same point 
+        //Add some DI here to handle multiple types of coords
 
         public IPoint get_point_by_coordinate(Coordinate coord)
         {
-            if (!(coord is TwoDGridCoord)) throw new NotImplementedException("Only TwoD grid coords are supported by the map");
+            if (!(coord is IsometricCood)) throw new NotImplementedException("Only TwoD grid coords are supported by the map");
 
-            var req = coord as TwoDGridCoord;
+            var req = coord as IsometricCood;
 
-            return new TwoDSquareGridPoint(req.get_x_value(), req.get_y_value());
+            return new IsometricPoint(req.get_left_value(), req.get_right_value());
 
         }
     }

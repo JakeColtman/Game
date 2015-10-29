@@ -9,7 +9,7 @@ namespace Engine.Attack
 {
     public class AttackRequest<T> : Message
     {
-        public IEntity<T> attacker;
-        public IEntity<T> attacked;
+        public IEntity attacker;
+        public IEntity attacked;
     }
 }
