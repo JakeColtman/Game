@@ -60,7 +60,6 @@
     <Compile Include="Handler.cs" />
     <Compile Include="Maps\Custom\DraughtsMap.cs" />
     <Compile Include="Maps\Default\IsometricMap.cs" />
-    <Compile Include="Maps\SquareMap.cs" />
     <Compile Include="Maps\IPointMap.cs" />
     <Compile Include="Maps\SquareMapEventHandler.cs" />
     <Compile Include="Maps\Default\TwoDGrid.cs" />
