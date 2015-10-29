@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Engine.Geometry;
 using Engine.Geometry.Coordinates;
 using Engine.Unit;
+using Engine.Geometry.Converters;
 
 namespace Engine.Maps.Default
 {
@@ -15,11 +16,14 @@ namespace Engine.Maps.Default
         //It also acts as a handler, taking messages and allowing rollback
 
         IDictionary<IPoint, IEntity> _lookup;
-        IDictionary<>
+        IConverter _converter;
+        IMapReader<IPoint> _pointMap;
 
-        public UnitMap(Dictionary<IPoint, IEntity> unitPositions)
+        public UnitMap(Dictionary<IPoint, IEntity> unitPositions, IConverter converter, IMapReader<IPoint> pointMap)
         {
             _lookup = unitPositions;
+            _converter = converter;
+            _pointMap = pointMap;
         }
 
         public bool commit()
@@ -29,7 +33,7 @@ namespace Engine.Maps.Default
 
         public IEntity get_from_coordinate(Coordinate coord)
         {
-            throw new NotImplementedException();
+            return _lookup[_pointMap.get_from_coordinate(_converter.get_point_from_coordinate(coord))];
         }
 
         public bool pass_message(Message message)

@@ -6,20 +6,26 @@ using System.Threading.Tasks;
 using Engine.Geometry;
 using Engine.Geometry.Coordinates;
 using Engine.Geometry.Coordinates.Default;
+using Engine.Geometry.Converters;
 
 namespace Engine.Maps
 {
     class TwoDGridMap : IMapReader<IPoint>
     {
-        // Simple infinitely extendable 2D grid of points.  Will provide multiple different objects if asked for the same point 
+
+        IConverter _converter;
+
+        public TwoDGridMap(IConverter converter)
+        {
+            _converter = converter;
+        }        
 
         public IPoint get_from_coordinate(Coordinate coord)
         {
-            if (!(coord is TwoDGridCoord)) throw new NotImplementedException("Only TwoD grid coords are supported by the map");
 
-            var req = coord as TwoDGridCoord;
+            TwoDGridCoord correctDimCoord = _converter.get_point_from_coordinate(coord) as TwoDGridCoord;
 
-            return new TwoDSquareGridPoint(req.get_x_value(), req.get_y_value());
+            return new TwoDSquareGridPoint(correctDimCoord.get_x_value(), correctDimCoord.get_y_value());
         }
 
 

@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.Geometry.Converters.cs
+namespace Engine.Geometry.Converters
 {
     public interface IConverter
     {
-        IPoint get_point_from_coordinate(Coordinate coord);
+        Coordinate get_point_from_coordinate(Coordinate coord);
     }
 }

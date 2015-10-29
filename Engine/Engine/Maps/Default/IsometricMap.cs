@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Engine.Geometry;
 using Engine.Geometry.Coordinates;
 using Engine.Geometry.Coordinates.Default;
+using Engine.Geometry.Converters;
 
 namespace Engine.Maps
 {
@@ -13,15 +14,20 @@ namespace Engine.Maps
     {
 
         // Simple infinitely extendable 2D grid of points.  Will provide multiple different objects if asked for the same point 
-        //Add some DI here to handle multiple types of coords
+
+        IConverter _converter;
+
+        public IsometricMap(IConverter converter)
+        {
+            _converter = converter;
+        }
 
         public IPoint get_from_coordinate(Coordinate coord)
         {
-            if (!(coord is IsometricCood)) throw new NotImplementedException("Only TwoD grid coords are supported by the map");
 
-            var req = coord as IsometricCood;
+            IsometricCood correctDimCoord = _converter.get_point_from_coordinate(coord) as IsometricCood;
 
-            return new IsometricPoint(req.get_left_value(), req.get_right_value());
+            return new IsometricPoint(correctDimCoord.get_left_value(), correctDimCoord.get_right_value());
 
         }
 
