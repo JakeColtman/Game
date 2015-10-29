@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attack\AttackRequest.cs" />
-    <Compile Include="Attack\DestructionRequest.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Geometry\Coordinates\Default\IsometricCood.cs" />
     <Compile Include="Geometry\Coordinates\Default\TwoDGridCoord.cs" />
