@@ -46,6 +46,9 @@
     <Compile Include="Attack\AttackRequest.cs" />
     <Compile Include="Attack\DestructionRequest.cs" />
     <Compile Include="Engine.cs" />
+    <Compile Include="Geometry\Coordinates\Default\IsometricCood.cs" />
+    <Compile Include="Geometry\Coordinates\Default\TwoDGridCoord.cs" />
+    <Compile Include="Geometry\Coordinates\Coordinate.cs" />
     <Compile Include="Geometry\Directions\Custom\Chess\KnightDirections.cs" />
     <Compile Include="Geometry\Directions\Custom\Draughts\BlackManDirections.cs" />
     <Compile Include="Geometry\Directions\Custom\Draughts\WhiteManDirections.cs" />
@@ -56,8 +59,9 @@
     <Compile Include="Geometry\Points\Default\TwoDSquareGridPoint.cs" />
     <Compile Include="Handler.cs" />
     <Compile Include="Maps\SquareMap.cs" />
-    <Compile Include="Maps\Mapping.cs" />
+    <Compile Include="Maps\IPointMap.cs" />
     <Compile Include="Maps\SquareMapEventHandler.cs" />
+    <Compile Include="Maps\Default\TwoDGrid.cs" />
     <Compile Include="Maps\Units.cs" />
     <Compile Include="Maps\Vector.cs" />
     <Compile Include="Message.cs" />
@@ -83,7 +87,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Geometry\Coordinates\Custom\" />
     <Folder Include="Geometry\Points\Custom\" />
+    <Folder Include="Maps\Custom\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

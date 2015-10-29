@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine.Mappings
+namespace Engine.Maps
 {
     
     public class SquareMap<TDimension, TMapped>
