@@ -55,11 +55,6 @@
     <Compile Include="Geometry\Points\IPoint.cs" />
     <Compile Include="Geometry\Points\Default\TwoDSquareGridPoint.cs" />
     <Compile Include="Handler.cs" />
-    <Compile Include="Maps\Coordinates\Iso2D.cs" />
-    <Compile Include="Maps\Coordinates\TwoDCoord.cs" />
-    <Compile Include="Maps\Coordinates\Dimensions.cs" />
-    <Compile Include="Maps\Coordinates\ICoord.cs" />
-    <Compile Include="Maps\Coordinates\VectorFactory.cs" />
     <Compile Include="Maps\SquareMap.cs" />
     <Compile Include="Maps\Mapping.cs" />
     <Compile Include="Maps\SquareMapEventHandler.cs" />
