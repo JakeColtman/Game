@@ -66,7 +66,7 @@
     <Compile Include="Movement\IMovement.cs" />
     <Compile Include="Movement\MovementRequest.cs" />
     <Compile Include="Movement\MovementRequestFactory.cs" />
-    <Compile Include="Player\TwoPlayers.cs" />
+    <Compile Include="Player\Side.cs" />
     <Compile Include="Rules\Composition\And.cs" />
     <Compile Include="Rules\Composition\Or.cs" />
     <Compile Include="Rules\BlockingRule.cs" />
