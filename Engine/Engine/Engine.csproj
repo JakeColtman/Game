@@ -49,6 +49,7 @@
     <Compile Include="Geometry\Directions\Custom\Chess\KnightDirections.cs" />
     <Compile Include="Geometry\Directions\Custom\Draughts\BlackManDirections.cs" />
     <Compile Include="Geometry\Directions\Custom\Draughts\WhiteManDirections.cs" />
+    <Compile Include="Geometry\Directions\Default\IsometricDirections.cs" />
     <Compile Include="Geometry\Directions\Direction.cs" />
     <Compile Include="Geometry\Directions\Default\TwoDGridDirections.cs" />
     <Compile Include="Geometry\Points\IPoint.cs" />
