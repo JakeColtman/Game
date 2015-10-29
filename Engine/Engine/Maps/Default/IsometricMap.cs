@@ -9,7 +9,7 @@ using Engine.Geometry.Coordinates.Default;
 
 namespace Engine.Maps
 {
-    class IsometricMap : IPointMapReader
+    class IsometricMap : IMapReader<IPoint>
     {
         // Simple infinitely extendable 2D grid of points.  Will provide multiple different objects if asked for the same point 
         //Add some DI here to handle multiple types of coords
@@ -23,5 +23,6 @@ namespace Engine.Maps
             return new IsometricPoint(req.get_left_value(), req.get_right_value());
 
         }
+
     }
 }

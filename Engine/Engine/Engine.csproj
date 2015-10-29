@@ -62,7 +62,7 @@
     <Compile Include="Maps\Default\IsometricMap.cs" />
     <Compile Include="Maps\Default\UnitMap.cs" />
     <Compile Include="Maps\IPointMap.cs" />
-    <Compile Include="Maps\Default\TwoDGrid.cs" />
+    <Compile Include="Maps\Default\TwoDGridMap.cs" />
     <Compile Include="Maps\Units.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Moveable.cs" />
