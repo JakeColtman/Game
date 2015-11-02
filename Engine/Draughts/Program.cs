@@ -4,6 +4,7 @@ using Engine.Unit;
 using Engine.Geometry.Coordinates;
 using Engine.Geometry;
 using Engine.Maps.Custom;
+using Engine.Geometry.Converters;
 namespace Draughts
 {
     public class Program
@@ -12,7 +13,7 @@ namespace Draughts
         public void Main(string[] args)
         {
 
-            DraughtsUnitMap map = new DraughtsUnitMap();
+            DraughtsUnitMap map = new DraughtsUnitMap(new IsometricConverter);
 
 
             Console.Read();

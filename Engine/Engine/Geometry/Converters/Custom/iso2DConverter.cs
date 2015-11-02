@@ -8,7 +8,7 @@ using Engine.Geometry.Coordinates.Default;
 
 namespace Engine.Geometry.Converters.Custom
 {
-    class Iso2DConverter : IConverter
+    public class Iso2DConverter : IConverter
     {
         public Coordinate get_point_from_coordinate(Coordinate coord)
         {
