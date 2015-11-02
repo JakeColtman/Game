@@ -9,6 +9,7 @@ namespace Engine.Geometry
     public interface IPoint
     {
         IPoint get_next_point_in_direction(Direction direction);
+        string get_id();
     }
 
 }

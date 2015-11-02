@@ -19,6 +19,11 @@ namespace Engine.Geometry
             _y = y;
         }
 
+        public string get_id()
+        {
+            return "2dgrid" + _x.ToString() + "-" + _y.ToString();
+        }
+
         public IPoint get_next_point_in_direction(Direction direction)
         {
             if (direction is Left) return new TwoDSquareGridPoint(_x - 1, _y);

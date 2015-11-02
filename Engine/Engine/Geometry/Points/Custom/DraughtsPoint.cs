@@ -19,6 +19,10 @@ namespace Engine.Geometry.Points.Custom
             _right = right;
         }
 
+        public string get_id()
+        {
+            return "draughts" + _left.ToString() + "-" + _right.ToString();
+        }
 
         public IPoint get_next_point_in_direction(Direction direction)
         {
