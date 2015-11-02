@@ -6,9 +6,9 @@ The purpose of this engine is two fold.  I want something that I can easily prot
 
 ##How it works
 
-To accomodate my goal of multiple spaces layered over each other, I have avoided any particular space being definitional.  Instead the core of the engine are "Points".  These points contain reference to other points in certain directions.  
+To accomodate my goal of multiple spaces layered over each other, I have avoided any particular space being definitional.  Instead the core of the engine are "Points".  Each point has an id and is a unique possible position that an entity can be in.  Points do not exist in any particular set of dimensions but instead contain references to other points in certain directions
 
-Layered on top of the points are representations of the points which are the spaces.  The representation contains a way to map from coordinates to points and to navigate through the points.  The engine allows converters which can be used to tether spaces together.  I.e. they identify that a coordinate in space 1 refers to the same point as coordinate in space 2.  This decoupling of coordinate systems and the underlying points allows very fluid movements between the two.  Indeed, new spaces can be added at run time.
+Layered on top of the points are representations of the points which do have dimensionality.  A representation of a set of points is essentially a mapping from a coodinate system into the points.  The engine supports converters which can be used to translate between coordinate system.  I.e. they identify that a coordinate in space 1 refers to the same point as coordinate in space 2.  This decoupling of coordinate systems and the underlying points allows very fluid movements between the two.  Indeed, new spaces can be added at run time.
 
 To meet the easy prototyping of games I have everywhere sacrificed performance for flexibility and ease of game design.  My engine is not designed to be a production engine for big games, but to allow playing around with concepts.
 
