@@ -61,7 +61,7 @@
     <Compile Include="Geometry\Points\IPoint.cs" />
     <Compile Include="Geometry\Points\Default\TwoDSquareGridPoint.cs" />
     <Compile Include="Handlers\IHandler.cs" />
-    <Compile Include="Maps\Custom\Draughts\DraughtsMap.cs" />
+    <Compile Include="Maps\Custom\Draughts\DraughtsUnitMap.cs" />
     <Compile Include="Maps\Default\IsometricMap.cs" />
     <Compile Include="Maps\Default\UnitMap.cs" />
     <Compile Include="Maps\IPointMap.cs" />
@@ -80,6 +80,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stats\StatsHandler.cs" />
+    <Compile Include="Unit\Custom\Draughts\Man.cs" />
     <Compile Include="Unit\Default\BlankMover.cs" />
     <Compile Include="Unit\IFactory.cs" />
     <Compile Include="Unit\Unit.cs" />
@@ -92,7 +93,6 @@
   <ItemGroup>
     <Folder Include="Geometry\Converters\Default\" />
     <Folder Include="Geometry\Coordinates\Custom\" />
-    <Folder Include="Unit\Custom\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
