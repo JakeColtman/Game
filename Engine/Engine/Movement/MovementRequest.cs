@@ -20,6 +20,16 @@ namespace Engine.Movement
             _movement = movement;
         }
               
+        public IEntity get_mover()
+        {
+            return _mover;
+        }
+
+        public IMovement get_movement()
+        {
+            return _movement;
+        }
+
         public IPoint get_final_position()
         {
 
