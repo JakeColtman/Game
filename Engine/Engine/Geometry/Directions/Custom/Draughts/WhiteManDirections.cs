@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Engine.Geometry.Directions.Custom.Draughts
 {
-    class WhiteManLeftDirection : Direction
+    public class WhiteManLeftDirection : Direction
     {
     }
 
-    class WhiteManRightDirection : Direction
+    public class WhiteManRightDirection : Direction
     {
     }
 }

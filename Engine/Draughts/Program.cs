@@ -8,6 +8,7 @@ using Engine.Geometry.Converters.Custom;
 using Engine.Unit.Custom.Draughts;
 using Engine.Geometry.Points.Custom;
 using Engine.Geometry.Coordinates.Default;
+using Engine.Geometry.Directions.Custom.Draughts;
 
 namespace Draughts
 {
@@ -21,7 +22,7 @@ namespace Draughts
             IPoint manPoint = new DraughtsPoint(0, 0);
             map.add_to_map(new IsometricCood(0,0), new Man(manPoint));
 
-            map.get_from_coordinate(new IsometricCood(0, 0)).move_in_direction(;
+            map.get_from_coordinate(new IsometricCood(0, 0)).move_in_direction(Bl;
 
 
             Console.Read();
