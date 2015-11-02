@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Attack\AttackRequest.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="Geometry\Converters\Custom\TwoDGridToIsoTwoDConverter.cs" />
+    <Compile Include="Geometry\Converters\Custom\Iso2DConverter.cs" />
     <Compile Include="Geometry\Converters\IConverter.cs" />
     <Compile Include="Geometry\Coordinates\Default\IsometricCood.cs" />
     <Compile Include="Geometry\Coordinates\Default\TwoDGridCoord.cs" />

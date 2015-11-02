@@ -12,7 +12,7 @@ using Engine.Geometry.Points.Custom;
 
 namespace Engine.Maps.Custom
 {
-    class DraughtsUnitMap : IMapReader<Man>, IMapUpdater<Man>
+    public class DraughtsUnitMap : IMapReader<Man>, IMapUpdater<Man>
     {
 
         IList<Man> men;
