@@ -61,7 +61,7 @@
     <Compile Include="Geometry\Points\IPoint.cs" />
     <Compile Include="Geometry\Points\Default\TwoDSquareGridPoint.cs" />
     <Compile Include="Handlers\IHandler.cs" />
-    <Compile Include="Maps\Custom\DraughtsMap.cs" />
+    <Compile Include="Maps\Custom\Draughts\DraughtsMap.cs" />
     <Compile Include="Maps\Default\IsometricMap.cs" />
     <Compile Include="Maps\Default\UnitMap.cs" />
     <Compile Include="Maps\IPointMap.cs" />
