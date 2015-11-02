@@ -45,5 +45,10 @@ namespace Engine.Maps.Default
         {
             throw new NotImplementedException();
         }
+
+        public IEntity get_from_point(IPoint point)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -31,5 +31,9 @@ namespace Engine.Maps
 
         }
 
+        public IPoint get_from_point(IPoint point)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

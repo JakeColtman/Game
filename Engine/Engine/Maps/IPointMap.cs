@@ -12,7 +12,8 @@ namespace Engine.Maps
     public interface IMapReader<T>
     {
         //Implementing this you'll probably want to inject something to parse the coordinates into the right form
-        T get_from_coordinate(Coordinate coord); 
+        T get_from_coordinate(Coordinate coord);
+        T get_from_point(IPoint point);
     } 
     
     public interface IMapUpdater<T>

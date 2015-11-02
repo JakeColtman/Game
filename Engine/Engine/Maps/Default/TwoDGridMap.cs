@@ -28,6 +28,9 @@ namespace Engine.Maps
             return new TwoDSquareGridPoint(correctDimCoord.get_x_value(), correctDimCoord.get_y_value());
         }
 
-
+        public IPoint get_from_point(IPoint point)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
