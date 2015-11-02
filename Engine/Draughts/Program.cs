@@ -6,6 +6,8 @@ using Engine.Geometry;
 using Engine.Maps.Custom;
 using Engine.Geometry.Converters.Custom;
 using Engine.Unit.Custom.Draughts;
+using Engine.Geometry.Points.Custom;
+using Engine.Geometry.Coordinates.Default;
 
 namespace Draughts
 {
@@ -16,8 +18,10 @@ namespace Draughts
         {
 
             DraughtsUnitMap map = new DraughtsUnitMap(new Iso2DConverter());
-            IPoint manPoint = new DraughsPoint()
-            map.add_to_map(new Man());
+            IPoint manPoint = new DraughtsPoint(0, 0);
+            map.add_to_map(new IsometricCood(0,0), new Man(manPoint));
+
+            map.get_from_coordinate(new IsometricCood(0, 0)).move_in_direction(;
 
 
             Console.Read();
