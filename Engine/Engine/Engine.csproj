@@ -56,6 +56,7 @@
     <Compile Include="Geometry\Directions\Default\IsometricDirections.cs" />
     <Compile Include="Geometry\Directions\Direction.cs" />
     <Compile Include="Geometry\Directions\Default\TwoDGridDirections.cs" />
+    <Compile Include="Geometry\Points\Custom\DraughtsPoint.cs" />
     <Compile Include="Geometry\Points\Default\IsometricPoint.cs" />
     <Compile Include="Geometry\Points\IPoint.cs" />
     <Compile Include="Geometry\Points\Default\TwoDSquareGridPoint.cs" />
@@ -91,7 +92,6 @@
   <ItemGroup>
     <Folder Include="Geometry\Converters\Default\" />
     <Folder Include="Geometry\Coordinates\Custom\" />
-    <Folder Include="Geometry\Points\Custom\" />
     <Folder Include="Unit\Custom\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
