@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Geometry.Points.Custom
 {
-    class DraughtsPoint : IPoint
+    public class DraughtsPoint : IPoint
     {
         
         int _left;
