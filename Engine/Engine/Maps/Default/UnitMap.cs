@@ -10,7 +10,7 @@ using Engine.Geometry.Converters;
 
 namespace Engine.Maps.Default
 {
-    class UnitMap : IHandler, IMapReader<IEntity>
+    public class UnitMap : IHandler, IMapReader<IEntity>
     {
         //This acts as a decorator over the top of a point map to keep a tab on where all units are
         //It also acts as a handler, taking messages and allowing rollback

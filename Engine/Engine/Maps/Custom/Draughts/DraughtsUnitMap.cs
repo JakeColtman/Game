@@ -29,7 +29,6 @@ namespace Engine.Maps.Custom
             IsometricCood correctDimCoord = _converter.get_point_from_coordinate(coord) as IsometricCood;
             IPoint point = new DraughtsPoint(correctDimCoord.get_left_value(), correctDimCoord.get_right_value());
             return men.Where(x => x.get_pos().get_id() == point.get_id()).First();
-
         }
 
     }

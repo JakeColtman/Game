@@ -8,10 +8,11 @@ using Engine.Player;
 
 namespace Engine.Unit.Custom.Draughts
 {
-    class Man : IEntity
+       
+    public class Man : IEntity
     {
 
-        IPoint _pos;
+        protected IPoint _pos;
 
         public Man(IPoint pos)
         {
@@ -33,4 +34,5 @@ namespace Engine.Unit.Custom.Draughts
             return new Man(_pos.get_next_point_in_direction(direction));
         }
     }
+
 }
