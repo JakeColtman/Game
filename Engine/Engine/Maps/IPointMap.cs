@@ -13,6 +13,13 @@ namespace Engine.Maps
     {
         //Implementing this you'll probably want to inject something to parse the coordinates into the right form
         T get_from_coordinate(Coordinate coord); 
-    }  
+    } 
+    
+    public interface IMapUpdater<T>
+    {
+        bool add_to_map(Coordinate coord, T addition);
+        bool remove_from_map(Coordinate coord);
+    }
+     
 
 }

@@ -12,7 +12,7 @@ using Engine.Geometry.Points.Custom;
 
 namespace Engine.Maps.Custom
 {
-    class DraughtsUnitMap : IMapReader<Man>
+    class DraughtsUnitMap : IMapReader<Man>, IMapUpdater<Man>
     {
 
         IList<Man> men;
@@ -24,6 +24,12 @@ namespace Engine.Maps.Custom
             men = new List<Man>();
         }
 
+        public bool add_to_map(Coordinate coord, Man addition)
+        {
+            men.Add(addition);
+            return true;
+        }
+
         public Man get_from_coordinate(Coordinate coord)
         {
             IsometricCood correctDimCoord = _converter.get_point_from_coordinate(coord) as IsometricCood;
@@ -31,5 +37,12 @@ namespace Engine.Maps.Custom
             return men.Where(x => x.get_pos().get_id() == point.get_id()).First();
         }
 
+        public bool remove_from_map(Coordinate coord)
+        {
+            IsometricCood correctDimCoord = _converter.get_point_from_coordinate(coord) as IsometricCood;
+            IPoint point = new DraughtsPoint(correctDimCoord.get_left_value(), correctDimCoord.get_right_value());
+            men.Where(x => x.get_pos().get_id() != point.get_id());
+            return true;
+        }
     }
 }
