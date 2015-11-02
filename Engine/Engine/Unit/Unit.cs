@@ -22,7 +22,7 @@ namespace Engine.Unit
     {
         TwoPlayers get_side();
         IPoint get_pos();
-        IEntity move_in_direction(Direction direction);
+        bool move_in_direction(Direction direction);
     }
     
 }

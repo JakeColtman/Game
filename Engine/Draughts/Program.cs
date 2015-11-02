@@ -15,15 +15,16 @@ namespace Draughts
     public class Program
     {
 
-        public void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             DraughtsUnitMap map = new DraughtsUnitMap(new Iso2DConverter());
             IPoint manPoint = new DraughtsPoint(0, 0);
             map.add_to_map(new IsometricCood(0,0), new Man(manPoint));
 
-            map.get_from_coordinate(new IsometricCood(0, 0)).move_in_direction(Bl;
+            map.get_from_coordinate(new IsometricCood(0, 0)).move_in_direction(new WhiteManLeftDirection());
 
+            Console.WriteLine(map.get_from_coordinate(new IsometricCood(1, 0)));
 
             Console.Read();
 

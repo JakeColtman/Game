@@ -26,10 +26,10 @@ namespace Engine.Geometry.Points.Custom
 
         public IPoint get_next_point_in_direction(Direction direction)
         {
-            if (direction is WhiteManLeftDirection) return new IsometricPoint(_left + 1, _right);
-            if (direction is WhiteManRightDirection) return new IsometricPoint(_left, _right + 1);
-            if (direction is BlackManLeftDirection) return new IsometricPoint(_left - 1, _right);
-            if (direction is BlackManRightDirection) return new IsometricPoint(_left, _right - 1);
+            if (direction is WhiteManLeftDirection) return new DraughtsPoint(_left + 1, _right);
+            if (direction is WhiteManRightDirection) return new DraughtsPoint(_left, _right + 1);
+            if (direction is BlackManLeftDirection) return new DraughtsPoint(_left - 1, _right);
+            if (direction is BlackManRightDirection) return new DraughtsPoint(_left, _right - 1);
 
             throw new NotImplementedException(direction.ToString() + " is not a valid dimension");
         }

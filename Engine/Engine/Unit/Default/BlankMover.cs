@@ -29,9 +29,10 @@ namespace Engine.Unit.Default
             throw new NotImplementedException();
         }
 
-        public IEntity move_in_direction(Direction direction)
+        public bool move_in_direction(Direction direction)
         {
-            return new BlankMover(_pos.get_next_point_in_direction(direction));
+            _pos = _pos.get_next_point_in_direction(direction);
+            return true;
         }
         
     }

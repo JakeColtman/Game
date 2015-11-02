@@ -27,6 +27,7 @@ namespace Engine.Maps.Custom
         public bool add_to_map(Coordinate coord, Man addition)
         {
             men.Add(addition);
+            Console.WriteLine(men[0].get_pos().get_id());
             return true;
         }
 
@@ -34,6 +35,7 @@ namespace Engine.Maps.Custom
         {
             IsometricCood correctDimCoord = _converter.get_point_from_coordinate(coord) as IsometricCood;
             IPoint point = new DraughtsPoint(correctDimCoord.get_left_value(), correctDimCoord.get_right_value());
+            Console.WriteLine(point.get_id());
             return men.Where(x => x.get_pos().get_id() == point.get_id()).First();
         }
 
@@ -41,6 +43,7 @@ namespace Engine.Maps.Custom
         {
             IsometricCood correctDimCoord = _converter.get_point_from_coordinate(coord) as IsometricCood;
             IPoint point = new DraughtsPoint(correctDimCoord.get_left_value(), correctDimCoord.get_right_value());
+            Console.WriteLine(point.get_id());
             men.Where(x => x.get_pos().get_id() != point.get_id());
             return true;
         }
